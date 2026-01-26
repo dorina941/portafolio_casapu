@@ -6,11 +6,20 @@
 }
 
 :root {
-    --primary-color: #2c3e50;
-    --secondary-color: #e74c3c;
-    --accent-color: #f39c12;
+    /* Paleta de colores inspirada en la imagen */
+    --pink-soft: #FFB6C1;
+    --blue-vibrant: #4A90E2;
+    --blue-sky: #87CEEB;
+    --lavender: #DDA0DD;
+    --purple-deep: #9370DB;
+    --yellow-bright: #FFD700;
+    
+    /* Colores principales */
+    --primary-color: #9370DB;
+    --secondary-color: #4A90E2;
+    --accent-color: #FFD700;
     --text-dark: #2c3e50;
-    --text-light: #7f8c8d;
+    --text-light: #6c757d;
     --bg-light: #f8f9fa;
     --bg-white: #ffffff;
     --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -54,7 +63,10 @@ body {
     font-family: 'Playfair Display', serif;
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--primary-color);
+    background: linear-gradient(135deg, var(--purple-deep), var(--blue-vibrant));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .nav-menu {
@@ -78,7 +90,7 @@ body {
     left: 0;
     width: 0;
     height: 2px;
-    background: var(--secondary-color);
+    background: linear-gradient(90deg, var(--purple-deep), var(--blue-vibrant), var(--pink-soft));
     transition: var(--transition);
 }
 
@@ -102,37 +114,9 @@ body {
     transition: var(--transition);
 }
 
-/* Hero Section */
+/* Hero Section - Ahora usando Tailwind, estos estilos se mantienen para compatibilidad */
 .hero {
-    position: relative;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    text-align: center;
-    overflow: hidden;
-}
-
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-    opacity: 0.3;
-}
-
-.hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.2);
+    /* Estilos movidos a Tailwind en el HTML */
 }
 
 .hero-content {
@@ -160,17 +144,34 @@ body {
 .btn-primary {
     display: inline-block;
     padding: 12px 30px;
-    background: var(--secondary-color);
+    background: linear-gradient(135deg, var(--purple-deep), var(--blue-vibrant));
     color: white;
     text-decoration: none;
     border-radius: 30px;
     font-weight: 600;
     transition: var(--transition);
     box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s;
+}
+
+.btn-primary:hover::before {
+    left: 100%;
 }
 
 .btn-primary:hover {
-    background: #c0392b;
+    background: linear-gradient(135deg, var(--blue-vibrant), var(--purple-deep));
     transform: translateY(-2px);
     box-shadow: var(--shadow-hover);
 }
@@ -182,7 +183,10 @@ body {
 }
 
 .portfolio-section.alt-bg {
-    background: var(--bg-light);
+    background: linear-gradient(180deg, 
+        rgba(255, 182, 193, 0.05) 0%, 
+        rgba(135, 206, 235, 0.05) 50%, 
+        rgba(221, 160, 221, 0.05) 100%);
 }
 
 .section-title {
@@ -190,7 +194,10 @@ body {
     font-size: 3rem;
     text-align: center;
     margin-bottom: 1rem;
-    color: var(--primary-color);
+    background: linear-gradient(135deg, var(--purple-deep), var(--blue-vibrant), var(--pink-soft));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .section-description {
@@ -226,13 +233,38 @@ body {
 .gallery-image-placeholder {
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, 
+        var(--pink-soft) 0%, 
+        var(--blue-vibrant) 25%, 
+        var(--blue-sky) 50%, 
+        var(--lavender) 75%, 
+        var(--purple-deep) 100%);
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
     font-size: 1.2rem;
     font-weight: 600;
+    position: relative;
+    overflow: hidden;
+}
+
+.gallery-image-placeholder::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 10px,
+            rgba(255, 255, 255, 0.05) 10px,
+            rgba(255, 255, 255, 0.05) 11px
+        );
+    opacity: 0.5;
 }
 
 .gallery-overlay {
@@ -264,8 +296,38 @@ body {
 /* Contact Section */
 .contact-section {
     padding: 100px 0;
-    background: var(--primary-color);
+    background: linear-gradient(135deg, 
+        var(--purple-deep) 0%, 
+        var(--blue-vibrant) 50%, 
+        var(--lavender) 100%);
     color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 98px,
+            rgba(255, 255, 255, 0.08) 98px,
+            rgba(255, 255, 255, 0.08) 100px
+        ),
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 98px,
+            rgba(255, 255, 255, 0.08) 98px,
+            rgba(255, 255, 255, 0.08) 100px
+        );
+    opacity: 0.4;
 }
 
 .contact-section .section-title {
@@ -292,7 +354,7 @@ body {
 .contact-item h3 {
     font-size: 1.3rem;
     margin-bottom: 0.5rem;
-    color: var(--accent-color);
+    color: var(--yellow-bright);
 }
 
 .contact-item p {
@@ -317,7 +379,7 @@ body {
 }
 
 .social-link:hover {
-    background: var(--secondary-color);
+    background: linear-gradient(135deg, var(--yellow-bright), var(--pink-soft));
     transform: translateY(-2px);
 }
 
@@ -349,8 +411,9 @@ body {
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: var(--accent-color);
+    border-color: var(--yellow-bright);
     background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
 }
 
 .contact-form .btn-primary {
@@ -359,10 +422,27 @@ body {
 
 /* Footer */
 .footer {
-    background: #1a252f;
+    background: linear-gradient(135deg, var(--purple-deep), var(--blue-vibrant));
     color: white;
     text-align: center;
     padding: 2rem 0;
+    position: relative;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        var(--pink-soft), 
+        var(--blue-vibrant), 
+        var(--blue-sky), 
+        var(--lavender), 
+        var(--purple-deep), 
+        var(--yellow-bright));
 }
 
 /* Animations */
@@ -443,6 +523,66 @@ html {
 
 /* Selection */
 ::selection {
-    background: var(--secondary-color);
+    background: linear-gradient(135deg, var(--pink-soft), var(--lavender));
     color: white;
 }
+
+/* Formas decorativas estáticas elegantes */
+.floating-shapes {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.shape {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.15;
+    filter: blur(60px);
+}
+
+.shape-1 {
+    width: 400px;
+    height: 400px;
+    background: var(--pink-soft);
+    top: -100px;
+    left: -100px;
+}
+
+.shape-2 {
+    width: 350px;
+    height: 350px;
+    background: var(--blue-vibrant);
+    bottom: -50px;
+    left: 10%;
+}
+
+.shape-3 {
+    width: 450px;
+    height: 450px;
+    background: var(--lavender);
+    top: 30%;
+    right: -150px;
+}
+
+.shape-4 {
+    width: 300px;
+    height: 300px;
+    background: var(--blue-sky);
+    bottom: 20%;
+    right: 15%;
+}
+
+.shape-5 {
+    width: 380px;
+    height: 380px;
+    background: var(--yellow-bright);
+    top: 50%;
+    right: -80px;
+}
+
