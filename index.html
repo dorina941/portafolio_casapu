@@ -39,10 +39,6 @@
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
-        .paint-blob:hover {
-            transform: translateY(-20px) scale(1.1);
-            filter: brightness(1.2) drop-shadow(0 20px 40px rgba(0, 0, 0, 0.2));
-        }
         
         /* Efecto de textura de pintura espesa */
         .paint-texture {
@@ -110,8 +106,8 @@
     <section id="inicio" class="relative min-h-screen flex items-center justify-center overflow-hidden bg-white">
         <!-- Manchas de pintura flotantes inspiradas en paletas reales -->
         <div class="absolute inset-0">
-            <!-- Rojo vibrante intenso -->
-            <div class="paint-blob paint-texture paint-mix absolute top-16 left-12 w-36 h-36 bg-gradient-to-br from-red-600 via-red-500 to-rose-600 opacity-90 shadow-2xl animate-float" style="animation-delay: 0s; border-radius: 35% 65% 70% 30% / 40% 25% 75% 60%;"></div>
+            <!-- Azul cian clarito -->
+            <div class="paint-blob paint-texture paint-mix absolute top-16 left-12 w-36 h-36 opacity-90 animate-float" style="animation-delay: 0s; border-radius: 35% 65% 70% 30% / 40% 25% 75% 60%; background: linear-gradient(to bottom right, rgba(224, 242, 254, 0.9), rgba(186, 230, 253, 0.85), rgba(125, 211, 252, 0.9)); pointer-events: none;"></div>
             
             <!-- Naranja rojizo -->
             <div class="paint-blob paint-texture absolute top-32 right-16 w-32 h-32 bg-gradient-to-br from-orange-500 via-red-400 to-orange-600 opacity-85 backdrop-blur-sm shadow-2xl animate-float" style="animation-delay: 1.2s; border-radius: 60% 40% 50% 50% / 55% 45% 55% 45%;"></div>
@@ -298,8 +294,9 @@
             
             <!-- Texto del hero -->
             <div class="text-center space-y-6 max-w-3xl">
-                <h1 class="text-5xl md:text-7xl font-bold text-gray-800 drop-shadow-lg" style="font-family: 'Playfair Display', serif;">
-                    Arte y Creatividad
+                <h1 class="text-5xl md:text-7xl font-bold drop-shadow-lg relative inline-block" style="font-family: 'Playfair Display', serif;">
+                    <span class="absolute top-0 left-0 w-full h-full text-black font-bold" style="transform: translate(2px, 2px); z-index: 0; pointer-events: none; font-family: 'Playfair Display', serif;">Arte y Programación</span>
+                    <span class="relative z-10" style="background: linear-gradient(135deg, #fbbf24, #a855f7, #fef3c7, #fbbf24); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Arte y Programación</span>
                 </h1>
                 <p class="text-xl md:text-2xl text-gray-600 font-light">
                     Explorando el mundo a través de la pintura, ilustración, modelado 3D y retratos
