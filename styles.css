@@ -55,9 +55,10 @@ body {
 
 .navbar .container {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 20px;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 3rem;
+    padding: 0.75rem 20px;
 }
 
 .logo {
@@ -75,6 +76,7 @@ body {
     display: flex;
     list-style: none;
     gap: 2rem;
+    margin-top: 12px;
 }
 
 .nav-menu a {
@@ -767,4 +769,59 @@ html {
 .java-project h3{ margin:0; font-weight: 700; color:#bae6fd; }
 .java-project p{ margin:.45rem 0 0; color:#94a3b8; font-size: .95rem; }
 .java-project span{ display:block; margin-top: .9rem; color:#64748b; font-size: .8rem; }
+
+/* ===== DorCas Logo Animations ===== */
+/* Contenedor del logo con altura definida para el canvas */
+#matrixRain {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.particles circle {
+    animation: particlePulse 2s ease-in-out infinite;
+}
+
+.particles circle:nth-child(odd) {
+    animation-delay: 0s;
+}
+
+.particles circle:nth-child(even) {
+    animation-delay: 1s;
+}
+
+@keyframes particlePulse {
+    0%, 100% {
+        opacity: 0.7;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+.circuit-lines path {
+    animation: circuitFlow 4s ease-in-out infinite;
+}
+
+.circuit-lines path:nth-child(odd) {
+    animation-delay: 0s;
+}
+
+.circuit-lines path:nth-child(even) {
+    animation-delay: 2s;
+}
+
+@keyframes circuitFlow {
+    0%, 100% {
+        opacity: 0.3;
+    }
+    50% {
+        opacity: 0.6;
+    }
+}
 
