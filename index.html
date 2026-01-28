@@ -124,10 +124,6 @@
     </style>
 </head>
 <body>
-    <!-- Fondo Matrix -->
-    <canvas id="matrix"></canvas>
-    <div class="matrix-overlay"></div>
-
     <!-- Navegación -->
     <nav class="navbar">
         <div class="container">
@@ -135,6 +131,7 @@
             <ul class="nav-menu">
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#pintura">Pintura</a></li>
+                <li><a href="#java">Java</a></li>
                 <li><a href="#ilustracion">Ilustración</a></li>
                 <li><a href="#modelado3d">Modelado 3D</a></li>
                 <li><a href="#retratos">Retratos</a></li>
@@ -190,6 +187,100 @@
             <!-- Texto del hero (oculto temporalmente) -->
             <div class="text-center space-y-6 max-w-3xl">
             </div>
+        </div>
+    </section>
+
+    <!-- Sección Java -->
+    <section id="java" class="java-section">
+        <div class="java-grid">
+
+            <!-- Texto -->
+            <div class="java-copy">
+                <h2 class="java-title">
+                    Java <span>/ JVM</span>
+                </h2>
+                <p class="java-subtitle">
+                    Proyectos donde aplico POO, colecciones, streams y buenas prácticas.
+                    Con repositorio y demo para que se vea real.
+                </p>
+
+                <div class="java-tags">
+                    <span class="java-tag">POO</span>
+                    <span class="java-tag">Collections</span>
+                    <span class="java-tag">Streams</span>
+                    <span class="java-tag">Spring Boot</span>
+                    <span class="java-tag">JUnit</span>
+                </div>
+
+                <div class="java-actions">
+                    <a class="java-btn primary" href="#java-projects">Ver proyectos</a>
+                    <a class="java-btn" href="https://github.com/TU_USUARIO" target="_blank" rel="noreferrer">GitHub</a>
+                </div>
+            </div>
+
+            <!-- Code Card -->
+            <div class="java-card-wrap">
+                <div class="java-glow"></div>
+
+                <article class="java-card" aria-label="Java code example">
+                    <div class="java-card-top">
+                        <div class="java-dots" aria-hidden="true">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                        <span class="java-card-label">Java • ejemplo real</span>
+                    </div>
+
+                    <pre class="java-pre"><code class="java-code"><span class="kw">import</span> java.util.*;
+<span class="kw">import</span> java.util.stream.*;
+
+<span class="kw">record</span> Project(String name, String tech, int stars) {}
+
+<span class="kw">public class</span> Showcase {
+  <span class="kw">public static void</span> main(String[] args) {
+    List&lt;Project&gt; projects = List.of(
+      <span class="kw">new</span> Project(<span class="str">"Spring API"</span>, <span class="str">"Spring Boot"</span>, 120),
+      <span class="kw">new</span> Project(<span class="str">"JavaFX Gallery"</span>, <span class="str">"JavaFX"</span>, 80),
+      <span class="kw">new</span> Project(<span class="str">"Algorithms"</span>, <span class="str">"DSA"</span>, 55)
+    );
+
+    String top = projects.stream()
+      .sorted(Comparator.comparingInt(Project::stars).reversed())
+      .map(p -&gt; p.name() + <span class="str">" • "</span> + p.tech())
+      .collect(Collectors.joining(<span class="str">" | "</span>));
+
+    System.out.println(top);
+  }
+}</code></pre>
+
+                    <div class="java-foot">
+                        <span>✔ Streams</span><span>✔ Records</span><span>✔ Collections</span><span>✔ Comparator</span>
+                    </div>
+                </article>
+            </div>
+
+        </div>
+
+        <!-- Proyectos -->
+        <div id="java-projects" class="java-projects">
+            <a class="java-project" href="https://github.com/TU_USUARIO/mi-spring-api" target="_blank" rel="noreferrer">
+                <h3>Spring Boot API</h3>
+                <p>CRUD + JWT + PostgreSQL</p>
+                <span>Repo →</span>
+            </a>
+
+            <a class="java-project" href="https://github.com/TU_USUARIO/javafx-gallery" target="_blank" rel="noreferrer">
+                <h3>JavaFX App</h3>
+                <p>UI + Eventos + Animaciones</p>
+                <span>Demo →</span>
+            </a>
+
+            <a class="java-project" href="https://github.com/TU_USUARIO/java-dsa" target="_blank" rel="noreferrer">
+                <h3>DSA en Java</h3>
+                <p>Árboles, grafos, sorting</p>
+                <span>Repo →</span>
+            </a>
         </div>
     </section>
 
@@ -419,68 +510,6 @@
             <p>&copy; 2026 Casapu Dorina. Todos los derechos reservados.</p>
         </div>
     </footer>
-
-    <!-- Script fondo Matrix -->
-    <script>
-        (function () {
-            const canvas = document.getElementById('matrix');
-            if (!canvas) return;
-
-            const ctx = canvas.getContext('2d');
-            const chars = "01{}[]()<>=+-*/;:.,$#@&|\\\\_~ABCDEFGHIJKLMNOPQRSTUVWXYZ".split('');
-
-            let w, h, cols, drops, fontSize;
-
-            function resize() {
-                const dpr = Math.max(1, window.devicePixelRatio || 1);
-                w = canvas.width = Math.floor(window.innerWidth * dpr);
-                h = canvas.height = Math.floor(window.innerHeight * dpr);
-                canvas.style.width = window.innerWidth + 'px';
-                canvas.style.height = window.innerHeight + 'px';
-
-                fontSize = Math.floor(16 * dpr);
-                cols = Math.floor(w / fontSize);
-                drops = Array(cols).fill(0).map(() => Math.random() * h / fontSize);
-                ctx.font = `${fontSize}px ui-monospace, SFMono-Regular, Menlo, monospace`;
-            }
-
-            function draw() {
-                ctx.fillStyle = 'rgba(2, 6, 23, 0.08)';
-                ctx.fillRect(0, 0, w, h);
-
-                for (let i = 0; i < cols; i++) {
-                    const text = chars[Math.floor(Math.random() * chars.length)];
-                    const x = i * fontSize;
-                    const y = drops[i] * fontSize;
-
-                    // Solo dibujar en la parte superior y con degradado suave hacia abajo
-                    const maxVisibleHeight = h * 0.5; // hasta la mitad de la home
-                    if (y <= maxVisibleHeight) {
-                        const t = y / maxVisibleHeight; // 0 en la parte superior, 1 en la mitad
-                        const alpha = 0.55 * (1 - t);   // 0.55 arriba, 0 en el límite inferior
-                        ctx.fillStyle = `rgba(56, 189, 248, ${alpha.toFixed(3)})`;
-                        ctx.fillText(text, x, y);
-                    }
-
-                    if (y > h && Math.random() > 0.975) drops[i] = 0;
-                    drops[i] += 0.9;
-                }
-
-                requestAnimationFrame(draw);
-            }
-
-            const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-            window.addEventListener('resize', resize);
-            resize();
-
-            if (!reduceMotion) {
-                draw();
-            } else {
-                ctx.fillStyle = '#020617';
-                ctx.fillRect(0, 0, w, h);
-            }
-        })();
-    </script>
 
     <script src="script.js"></script>
 </body>
