@@ -154,7 +154,7 @@
         <div class="relative z-10 flex flex-col items-center justify-center px-4 py-20">
             <!-- Botón animado tipo dev en el centro -->
             <div class="relative mb-8">
-                <div class="relative w-[420px] h-[360px] md:w-[500px] md:h-[440px] flex items-center justify-center">
+                <div class="relative w-[420px] h-[540px] md:w-[500px] md:h-[660px] flex items-center justify-center">
                     <a href="#pintura"
                        class="relative px-[90px] py-[45px] shadow-[0_0_10px_5px_rgba(0,0,0,0.4)] bg-slate-950 text-slate-200 no-underline uppercase tracking-[4px] font-bold font-mono overflow-hidden inline-block text-[22px] md:text-[26px] select-none"
                        style="font-family:Consolas,monospace;">
@@ -166,10 +166,23 @@
                               style="background: linear-gradient(to left, #0f172a, #37F4FA); animation: animate3 2s linear infinite;"></span>
                         <span class="absolute top-0 left-0 h-full w-[3px]"
                               style="background: linear-gradient(to top, #0f172a, #37F4FA); animation: animate4 2s linear infinite; animation-delay: 1s;"></span>
-                        <span class="relative z-10"
-                              style="background: linear-gradient(135deg, #fbbf24, #a855f7, #fef3c7, #fbbf24); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
-                            Programación y ... <span style="font-family: 'Kalam', 'Indie Flower', cursive; font-style: normal; font-weight: 400; font-size: 0.9em; letter-spacing: 1px;">Arte</span>
-                        </span>
+                        <div class="relative z-10 flex flex-col items-center space-y-1 text-center">
+                            <!-- Línea principal: Programación y ... Arte (mismas fuentes y colores) -->
+                            <span class="block"
+                                  style="background: linear-gradient(135deg, #fbbf24, #a855f7, #fef3c7, #fbbf24); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; white-space: nowrap;">
+                                Programación y ... <span style="font-family: 'Kalam', 'Indie Flower', cursive; font-style: normal; font-weight: 400; font-size: 0.9em; letter-spacing: 1px;">Arte</span>
+                            </span>
+                            <!-- Debajo: Portfolio en azul oscuro más pequeño -->
+                            <span class="block text-sm md:text-base"
+                                  style="color:#1e3a8a; font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">
+                                Portfolio
+                            </span>
+                            <!-- Más abajo: Dorina Casapu en amarillo con 60% de opacidad -->
+                            <span class="block text-sm md:text-base"
+                                  style="color: rgba(234,179,8,0.6); font-family: 'Playfair Display', serif;">
+                                Dorina Casapu
+                            </span>
+                        </div>
                     </a>
                 </div>
             </div>
