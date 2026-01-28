@@ -80,22 +80,28 @@
             z-index: -1;
         }
 
-        /* Bordes animados para botón tipo "dev" */
-        @keyframes animate1 {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
+        /* Glow que respira para botones */
+        @keyframes breathe {
+            0%, 100% { 
+                box-shadow: 0 0 4px rgba(56, 189, 248, 0.15),
+                            0 0 8px rgba(56, 189, 248, 0.08);
+            }
+            50% { 
+                box-shadow: 0 0 6px rgba(56, 189, 248, 0.2),
+                            0 0 12px rgba(56, 189, 248, 0.1);
+            }
         }
-        @keyframes animate2 {
-            0% { transform: translateY(-100%); }
-            100% { transform: translateY(100%); }
+        
+        .glow-breathe {
+            animation: breathe 3s ease-in-out infinite;
+            transition: all 0.3s ease;
         }
-        @keyframes animate3 {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
-        }
-        @keyframes animate4 {
-            0% { transform: translateY(100%); }
-            100% { transform: translateY(-100%); }
+        
+        .glow-breathe:hover {
+            box-shadow: 0 0 8px rgba(56, 189, 248, 0.35),
+                        0 0 16px rgba(56, 189, 248, 0.2);
+            transform: scale(1.02);
+            background: rgba(15, 23, 42, 0.9);
         }
 
         /* Fondo tipo Matrix para la home */
@@ -149,39 +155,67 @@
     <section id="inicio" class="relative min-h-screen flex items-center justify-center overflow-hidden bg-transparent">
         <!-- Contenedor principal centrado -->
         <div class="relative z-10 flex flex-col items-center justify-center px-4 py-20">
-            <!-- Botón animado tipo dev en el centro -->
-            <div class="relative mb-8">
-                <div class="relative w-[420px] h-[540px] md:w-[500px] md:h-[660px] flex items-center justify-center">
-                    <a href="#pintura"
-                       class="relative px-[90px] py-[45px] shadow-[0_0_10px_5px_rgba(0,0,0,0.4)] bg-slate-950 text-slate-200 no-underline uppercase tracking-[4px] font-bold font-mono overflow-hidden inline-block text-[22px] md:text-[26px] select-none"
-                       style="font-family:Consolas,monospace;">
-                        <span class="absolute top-0 right-0 w-full h-[3px]"
-                              style="background: linear-gradient(to right, #0f172a, #37F4FA); animation: animate1 2s linear infinite;"></span>
-                        <span class="absolute top-0 right-0 h-full w-[3px]"
-                              style="background: linear-gradient(to bottom, #0f172a, #37F4FA); animation: animate2 2s linear infinite; animation-delay: 1s;"></span>
-                        <span class="absolute bottom-0 right-0 w-full h-[3px]"
-                              style="background: linear-gradient(to left, #0f172a, #37F4FA); animation: animate3 2s linear infinite;"></span>
-                        <span class="absolute top-0 left-0 h-full w-[3px]"
-                              style="background: linear-gradient(to top, #0f172a, #37F4FA); animation: animate4 2s linear infinite; animation-delay: 1s;"></span>
-                        <div class="relative z-10 flex flex-col items-center space-y-1 text-center">
-                            <!-- Línea principal: Programación y ... Arte (mismas fuentes y colores) -->
-                            <span class="block"
-                                  style="background: linear-gradient(135deg, #fbbf24, #a855f7, #fef3c7, #fbbf24); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; white-space: nowrap;">
-                                Programación y ... <span style="font-family: 'Kalam', 'Indie Flower', cursive; font-style: normal; font-weight: 400; font-size: 0.9em; letter-spacing: 1px;">Arte</span>
-                            </span>
-                            <!-- Debajo: Portfolio en azul oscuro más pequeño -->
-                            <span class="block text-sm md:text-base"
-                                  style="color:#1e3a8a; font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">
-                                Portfolio
-                            </span>
-                            <!-- Más abajo: Dorina Casapu en amarillo con 60% de opacidad -->
-                            <span class="block text-sm md:text-base"
-                                  style="color: rgba(234,179,8,0.6); font-family: 'Playfair Display', serif;">
-                                Dorina Casapu
-                            </span>
-                        </div>
-                    </a>
-                </div>
+            <!-- Grid de botones animados -->
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 max-w-4xl mx-auto">
+                <!-- Botón Arte -->
+                <a href="#pintura"
+                   class="glow-breathe relative px-[45px] py-[22px] bg-slate-950 text-slate-200 no-underline uppercase tracking-[4px] font-bold font-mono overflow-hidden inline-block text-[11px] md:text-[13px] select-none flex items-center justify-center rounded-lg border border-slate-700"
+                   style="font-family:Consolas,monospace; min-height: 135px;">
+                    <span class="relative z-10"
+                          style="color: #f9a8d4; white-space: nowrap; font-family: 'Inter', sans-serif; font-weight: 600;">
+                        Arte
+                    </span>
+                </a>
+
+                <!-- Botón Programacion -->
+                <a href="#java"
+                   class="glow-breathe relative px-[45px] py-[22px] bg-slate-950 text-slate-200 no-underline uppercase tracking-[4px] font-bold font-mono overflow-hidden inline-block text-[11px] md:text-[13px] select-none flex items-center justify-center rounded-lg border border-slate-700"
+                   style="font-family:Consolas,monospace; min-height: 135px;">
+                    <span class="relative z-10"
+                          style="color: #f9a8d4; white-space: nowrap; font-family: 'Inter', sans-serif; font-weight: 600;">
+                        Programacion
+                    </span>
+                </a>
+
+                <!-- Botón Unity -->
+                <a href="#unity"
+                   class="glow-breathe relative px-[45px] py-[22px] bg-slate-950 text-slate-200 no-underline uppercase tracking-[4px] font-bold font-mono overflow-hidden inline-block text-[11px] md:text-[13px] select-none flex items-center justify-center rounded-lg border border-slate-700"
+                   style="font-family:Consolas,monospace; min-height: 135px;">
+                    <span class="relative z-10"
+                          style="color: #f9a8d4; white-space: nowrap; font-family: 'Inter', sans-serif; font-weight: 600;">
+                        Unity
+                    </span>
+                </a>
+
+                <!-- Botón Modelado 3d -->
+                <a href="#modelado3d"
+                   class="glow-breathe relative px-[45px] py-[22px] bg-slate-950 text-slate-200 no-underline uppercase tracking-[4px] font-bold font-mono overflow-hidden inline-block text-[11px] md:text-[13px] select-none flex items-center justify-center rounded-lg border border-slate-700"
+                   style="font-family:Consolas,monospace; min-height: 135px;">
+                    <span class="relative z-10"
+                          style="color: #f9a8d4; white-space: nowrap; font-family: 'Inter', sans-serif; font-weight: 600;">
+                        Modelado 3d
+                    </span>
+                </a>
+
+                <!-- Botón Tienda -->
+                <a href="#tienda"
+                   class="glow-breathe relative px-[45px] py-[22px] bg-slate-950 text-slate-200 no-underline uppercase tracking-[4px] font-bold font-mono overflow-hidden inline-block text-[11px] md:text-[13px] select-none flex items-center justify-center rounded-lg border border-slate-700"
+                   style="font-family:Consolas,monospace; min-height: 135px;">
+                    <span class="relative z-10"
+                          style="color: #f9a8d4; white-space: nowrap; font-family: 'Inter', sans-serif; font-weight: 600;">
+                        Tienda
+                    </span>
+                </a>
+
+                <!-- Botón extra (sexto) -->
+                <a href="#contacto"
+                   class="glow-breathe relative px-[45px] py-[22px] bg-slate-950 text-slate-200 no-underline uppercase tracking-[4px] font-bold font-mono overflow-hidden inline-block text-[11px] md:text-[13px] select-none flex items-center justify-center rounded-lg border border-slate-700"
+                   style="font-family:Consolas,monospace; min-height: 135px;">
+                    <span class="relative z-10"
+                          style="color: #f9a8d4; white-space: nowrap; font-family: 'Inter', sans-serif; font-weight: 600;">
+                        Contacto
+                    </span>
+                </a>
             </div>
             
             <!-- Texto del hero (oculto temporalmente) -->
