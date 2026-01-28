@@ -111,12 +111,15 @@
             inset: 0;
             z-index: 1;
             pointer-events: none;
-            background: radial-gradient(
-                circle at 50% 40%,
-                rgba(56, 189, 248, 0.10),
-                rgba(2, 6, 23, 0.85) 60%,
-                rgba(2, 6, 23, 0.98) 100%
-            );
+            /* Más luz arriba y degradado suave hacia abajo */
+            background:
+                linear-gradient(
+                    to bottom,
+                    rgba(15, 23, 42, 0.0) 0%,
+                    rgba(15, 23, 42, 0.4) 40%,
+                    rgba(15, 23, 42, 0.85) 75%,
+                    rgba(15, 23, 42, 0.98) 100%
+                );
         }
     </style>
 </head>
@@ -153,7 +156,7 @@
             <div class="relative mb-8">
                 <div class="relative w-[420px] h-[360px] md:w-[500px] md:h-[440px] flex items-center justify-center">
                     <a href="#pintura"
-                       class="relative px-[60px] py-[30px] shadow-[0_0_10px_5px_rgba(0,0,0,0.4)] text-slate-200 no-underline uppercase tracking-[4px] font-bold font-mono overflow-hidden inline-block text-[26px] md:text-[30px] select-none"
+                       class="relative px-[90px] py-[45px] shadow-[0_0_10px_5px_rgba(0,0,0,0.4)] bg-slate-950 text-slate-200 no-underline uppercase tracking-[4px] font-bold font-mono overflow-hidden inline-block text-[22px] md:text-[26px] select-none"
                        style="font-family:Consolas,monospace;">
                         <span class="absolute top-0 right-0 w-full h-[3px]"
                               style="background: linear-gradient(to right, #0f172a, #37F4FA); animation: animate1 2s linear infinite;"></span>
@@ -163,7 +166,10 @@
                               style="background: linear-gradient(to left, #0f172a, #37F4FA); animation: animate3 2s linear infinite;"></span>
                         <span class="absolute top-0 left-0 h-full w-[3px]"
                               style="background: linear-gradient(to top, #0f172a, #37F4FA); animation: animate4 2s linear infinite; animation-delay: 1s;"></span>
-                        Ver Portfolio
+                        <span class="relative z-10"
+                              style="background: linear-gradient(135deg, #fbbf24, #a855f7, #fef3c7, #fbbf24); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                            Programación y ... <span style="font-family: 'Kalam', 'Indie Flower', cursive; font-style: normal; font-weight: 400; font-size: 0.9em; letter-spacing: 1px;">Arte</span>
+                        </span>
                     </a>
                 </div>
             </div>
@@ -444,9 +450,12 @@
                     const x = i * fontSize;
                     const y = drops[i] * fontSize;
 
-                    // Solo dibujar hasta la mitad superior y con menos opacidad
-                    if (y <= h / 2) {
-                        ctx.fillStyle = 'rgba(56, 189, 248, 0.35)';
+                    // Solo dibujar en la parte superior y con degradado suave hacia abajo
+                    const maxVisibleHeight = h * 0.5; // hasta la mitad de la home
+                    if (y <= maxVisibleHeight) {
+                        const t = y / maxVisibleHeight; // 0 en la parte superior, 1 en la mitad
+                        const alpha = 0.55 * (1 - t);   // 0.55 arriba, 0 en el límite inferior
+                        ctx.fillStyle = `rgba(56, 189, 248, ${alpha.toFixed(3)})`;
                         ctx.fillText(text, x, y);
                     }
 
