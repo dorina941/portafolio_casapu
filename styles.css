@@ -339,6 +339,12 @@ button.btn-secondary:disabled {
     font-size: 1.05rem;
 }
 
+.game-back {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 1.5rem;
+}
+
 /* Game */
 .game-shell {
     background: var(--card-bg);
