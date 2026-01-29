@@ -50,9 +50,7 @@ body {
     width: min(1218px, calc(100% - 40px));
     transform: translateX(-50%);
     height: 68px;
-    background: rgba(248, 250, 252, 0.88);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    background: rgba(248, 250, 252, 0.95);
     border-bottom: 1px solid rgba(226, 232, 240, 0.7);
     z-index: 1000;
     transition: var(--transition);
