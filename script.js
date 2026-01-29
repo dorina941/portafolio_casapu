@@ -595,6 +595,18 @@ if (prevButton) {
 
 if (nextButton) {
     nextButton.addEventListener('click', () => {
+        const lesson = lessons[state.index];
+        const answerState = lesson ? state.answers[lesson.id] : null;
+
+        if (!answerState?.isCorrect) {
+            if (challengeFeedback) {
+                challengeFeedback.textContent = 'Responde correctamente para avanzar al siguiente nivel.';
+                challengeFeedback.classList.remove('is-correct');
+                challengeFeedback.classList.add('is-wrong');
+            }
+            return;
+        }
+
         if (state.index < lessons.length - 1) {
             state.index += 1;
             renderLesson();
