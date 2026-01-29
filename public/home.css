@@ -45,12 +45,15 @@ body {
 .navbar {
     position: fixed;
     top: 0;
-    width: 100%;
+    left: 50%;
+    width: min(1200px, calc(100% - 40px));
+    transform: translateX(-50%);
     background: transparent !important;
     backdrop-filter: blur(10px);
     box-shadow: var(--shadow);
     z-index: 1000;
     transition: var(--transition);
+    border-radius: 16px;
 }
 
 .navbar .container {
