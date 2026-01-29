@@ -380,6 +380,499 @@ t.start();`,
             answerIndex: 1,
             explanation: 'start() crea y lanza el nuevo hilo.'
         }
+    },
+    {
+        id: 10,
+        title: '10️⃣ static (miembro de clase)',
+        summary: 'static pertenece a la clase, no al objeto.',
+        theory: [
+            'Un miembro static es compartido.',
+            'Existe una sola copia por clase.',
+            'Se accede sin instanciar.'
+        ],
+        breakdown: [
+            'static pertenece a la clase, no al objeto.',
+            'Se comparte entre todas las instancias.',
+            'Es útil para contadores o utilidades.'
+        ],
+        code: `class Contador {
+    static int total = 0;
+}`,
+        interview: 'static se usa cuando el estado o comportamiento es común a toda la clase.',
+        challenge: {
+            type: 'Pregunta conceptual',
+            question: '¿Qué describe correctamente a static?',
+            options: ['Pertenece a cada objeto', 'Pertenece a la clase y se comparte', 'Solo funciona en main'],
+            answerIndex: 1,
+            explanation: 'static crea un único valor compartido por todas las instancias.'
+        }
+    },
+    {
+        id: 11,
+        title: '11️⃣ Tipos primitivos vs objetos',
+        summary: 'Primitivos son valores directos, objetos son referencias.',
+        theory: [
+            'int es primitivo (stack).',
+            'Integer es objeto (heap).',
+            'Wrappers permiten usar colecciones.'
+        ],
+        breakdown: [
+            'int es primitivo y vive en stack.',
+            'Integer es objeto y vive en heap.',
+            'Los wrappers permiten métodos y null.'
+        ],
+        code: `int x = 5;
+Integer y = 5;`,
+        interview: 'Los primitivos son más rápidos; los wrappers permiten trabajar con colecciones.',
+        challenge: {
+            type: 'Pregunta conceptual',
+            question: '¿Cuál es un wrapper?',
+            options: ['int', 'Integer', 'double'],
+            answerIndex: 1,
+            explanation: 'Integer es la clase envoltorio del primitivo int.'
+        }
+    },
+    {
+        id: 12,
+        title: '12️⃣ Constructores',
+        summary: 'Inicializan el objeto al crearse.',
+        theory: [
+            'Se ejecutan al crear el objeto.',
+            'Inicializan el estado.',
+            'Pueden recibir parámetros.'
+        ],
+        breakdown: [
+            'El constructor corre al instanciar.',
+            'Asigna valores iniciales.',
+            'Evita objetos incompletos.'
+        ],
+        code: `class Persona {
+    String nombre;
+
+    Persona(String nombre) {
+        this.nombre = nombre;
+    }
+}`,
+        interview: 'Un constructor asegura que el objeto nazca válido.',
+        challenge: {
+            type: 'Pregunta conceptual',
+            question: '¿Cuándo se ejecuta un constructor?',
+            options: ['Al crear el objeto', 'Al terminar el programa', 'Cuando se llama un getter'],
+            answerIndex: 0,
+            explanation: 'El constructor se ejecuta justo al instanciar la clase.'
+        }
+    },
+    {
+        id: 13,
+        title: '13️⃣ this',
+        summary: 'Referencia a la instancia actual.',
+        theory: [
+            'Distingue atributos de parámetros.',
+            'Apunta al objeto actual.',
+            'Se usa mucho en constructores.'
+        ],
+        breakdown: [
+            'this evita confusión de nombres.',
+            'Hace referencia al objeto actual.',
+            'Permite encadenar métodos.'
+        ],
+        code: `this.nombre = nombre;`,
+        interview: 'this referencia la instancia actual.',
+        challenge: {
+            type: 'Pregunta conceptual',
+            question: '¿Qué representa this?',
+            options: ['La clase padre', 'La instancia actual', 'El paquete'],
+            answerIndex: 1,
+            explanation: 'this siempre apunta al objeto actual.'
+        }
+    },
+    {
+        id: 14,
+        title: '14️⃣ super',
+        summary: 'Accede a miembros de la clase padre.',
+        theory: [
+            'Llama métodos del padre.',
+            'Accede a constructores base.',
+            'Evita duplicar lógica.'
+        ],
+        breakdown: [
+            'super llama a la clase padre.',
+            'Permite reutilizar comportamiento.',
+            'Se usa en herencia.'
+        ],
+        code: `super.comer();`,
+        interview: 'super permite reutilizar comportamiento del padre.',
+        challenge: {
+            type: 'Pregunta conceptual',
+            question: '¿Para qué se usa super?',
+            options: ['Acceder a miembros del padre', 'Crear un objeto nuevo', 'Declarar una interfaz'],
+            answerIndex: 0,
+            explanation: 'super invoca métodos o constructores de la clase padre.'
+        }
+    },
+    {
+        id: 15,
+        title: '15️⃣ Arrays',
+        summary: 'Estructura de tamaño fijo y acceso rápido.',
+        theory: [
+            'Tamaño fijo.',
+            'Acceso rápido por índice.',
+            'Es una estructura básica.'
+        ],
+        breakdown: [
+            'Un array tiene longitud fija.',
+            'Accedes por índice en O(1).',
+            'Es eficiente pero poco flexible.'
+        ],
+        code: `int[] numeros = {1, 2, 3};`,
+        interview: 'Un array es eficiente pero poco flexible.',
+        challenge: {
+            type: 'Pregunta conceptual',
+            question: '¿Qué característica define a un array?',
+            options: ['Tamaño fijo', 'Orden aleatorio', 'Claves y valores'],
+            answerIndex: 0,
+            explanation: 'Los arrays tienen tamaño fijo.'
+        }
+    },
+    {
+        id: 16,
+        title: '16️⃣ Bucle for-each',
+        summary: 'Itera colecciones de forma simple.',
+        theory: [
+            'Itera sin índices explícitos.',
+            'Más legible.',
+            'Reduce errores de límites.'
+        ],
+        breakdown: [
+            'Recorre cada elemento.',
+            'No necesitas índices.',
+            'Mejora legibilidad.'
+        ],
+        code: `for (String n : nombres) {
+    System.out.println(n);
+}`,
+        interview: 'El for-each reduce errores y mejora legibilidad.',
+        challenge: {
+            type: 'Pregunta conceptual',
+            question: '¿Qué ventaja tiene for-each?',
+            options: ['Evita índices manuales', 'Permite modificar tamaño', 'Es más lento siempre'],
+            answerIndex: 0,
+            explanation: 'for-each recorre colecciones sin índices explícitos.'
+        }
+    },
+    {
+        id: 17,
+        title: '17️⃣ .equals() vs ==',
+        summary: 'equals compara contenido, == referencia.',
+        theory: [
+            '== compara referencias.',
+            'equals compara contenido.',
+            'equals puede sobrescribirse.'
+        ],
+        breakdown: [
+            '== compara direcciones.',
+            'equals compara valor.',
+            'En objetos usa equals().'
+        ],
+        code: `a.equals(b); // contenido
+a == b;      // referencia`,
+        interview: 'En objetos, siempre usar equals().',
+        challenge: {
+            type: 'Pregunta conceptual',
+            question: '¿Qué compara == en objetos?',
+            options: ['Contenido', 'Referencia', 'Hash'],
+            answerIndex: 1,
+            explanation: '== compara si las referencias apuntan al mismo objeto.'
+        }
+    },
+    {
+        id: 18,
+        title: '18️⃣ toString()',
+        summary: 'Convierte objetos a texto.',
+        theory: [
+            'Se usa al imprimir un objeto.',
+            'Puede sobrescribirse.',
+            'Útil para debug.'
+        ],
+        breakdown: [
+            'System.out.println(obj) llama toString.',
+            'Devuelve una representación legible.',
+            'Facilita el logging.'
+        ],
+        code: `System.out.println(obj);`,
+        interview: 'toString() facilita el logging y depuración.',
+        challenge: {
+            type: 'Pregunta conceptual',
+            question: '¿Para qué sirve toString()?',
+            options: ['Convertir objeto a texto', 'Comparar objetos', 'Crear un objeto'],
+            answerIndex: 0,
+            explanation: 'toString devuelve una representación textual del objeto.'
+        }
+    },
+    {
+        id: 19,
+        title: '19️⃣ throw',
+        summary: 'Lanza excepciones personalizadas.',
+        theory: [
+            'Lanza un error controlado.',
+            'Detiene el flujo normal.',
+            'Comunica estados inválidos.'
+        ],
+        breakdown: [
+            'throw crea una excepción.',
+            'Se usa para validar.',
+            'Evita estados incorrectos.'
+        ],
+        code: `throw new IllegalArgumentException("Edad inválida");`,
+        interview: 'Las excepciones comunican errores de forma clara.',
+        challenge: {
+            type: 'Pregunta conceptual',
+            question: '¿Qué hace throw?',
+            options: ['Lanza una excepción', 'Captura una excepción', 'Ignora un error'],
+            answerIndex: 0,
+            explanation: 'throw lanza una excepción manualmente.'
+        }
+    },
+    {
+        id: 20,
+        title: '20️⃣ throws',
+        summary: 'Declara excepciones que se propagan.',
+        theory: [
+            'Propaga la excepción.',
+            'Otro método decide manejarla.',
+            'Obliga a try/catch o throws.'
+        ],
+        breakdown: [
+            'throws declara posibles errores.',
+            'La llamada decide cómo manejar.',
+            'Mantiene la firma clara.'
+        ],
+        code: `void leer() throws IOException {}`,
+        interview: 'throws delega el manejo del error.',
+        challenge: {
+            type: 'Pregunta conceptual',
+            question: '¿Qué indica throws?',
+            options: ['Que el método lanza una excepción', 'Que siempre captura excepciones', 'Que no puede fallar'],
+            answerIndex: 0,
+            explanation: 'throws declara que el método puede lanzar excepciones.'
+        }
+    },
+    {
+        id: 21,
+        title: '21️⃣ Scanner',
+        summary: 'Lee datos desde consola.',
+        theory: [
+            'Permite leer input del usuario.',
+            'Se usa con System.in.',
+            'Convierte a tipos básicos.'
+        ],
+        breakdown: [
+            'Scanner lee desde consola.',
+            'Puedes leer int, String, etc.',
+            'Es ideal para ejercicios.'
+        ],
+        code: `Scanner sc = new Scanner(System.in);
+int edad = sc.nextInt();`,
+        interview: 'Scanner permite interacción con el usuario.',
+        challenge: {
+            type: 'Pregunta conceptual',
+            question: '¿Para qué se usa Scanner?',
+            options: ['Leer datos de entrada', 'Conectar a base de datos', 'Crear archivos'],
+            answerIndex: 0,
+            explanation: 'Scanner lee datos desde System.in.'
+        }
+    },
+    {
+        id: 22,
+        title: '22️⃣ File',
+        summary: 'Representa rutas de archivos o carpetas.',
+        theory: [
+            'Modela archivos o directorios.',
+            'No lee contenido.',
+            'Permite consultar existencia.'
+        ],
+        breakdown: [
+            'File representa archivos o carpetas.',
+            'No lee archivos, solo los representa.',
+            'Se usa con streams.'
+        ],
+        code: `File f = new File("datos.txt");`,
+        interview: 'File no lee archivos, los representa.',
+        challenge: {
+            type: 'Pregunta conceptual',
+            question: '¿Qué hace File?',
+            options: ['Representa una ruta', 'Lee el archivo', 'Escribe automáticamente'],
+            answerIndex: 0,
+            explanation: 'File solo representa rutas y metadatos.'
+        }
+    },
+    {
+        id: 23,
+        title: '23️⃣ BufferedReader',
+        summary: 'Lectura eficiente de texto.',
+        theory: [
+            'Lee con buffer.',
+            'Ideal para archivos grandes.',
+            'Trabaja con FileReader.'
+        ],
+        breakdown: [
+            'BufferedReader mejora rendimiento.',
+            'Reduce accesos al disco.',
+            'Lee líneas completas.'
+        ],
+        code: `BufferedReader br = new BufferedReader(new FileReader("a.txt"));`,
+        interview: 'El buffer mejora el rendimiento de lectura.',
+        challenge: {
+            type: 'Pregunta conceptual',
+            question: '¿Por qué usar BufferedReader?',
+            options: ['Para leer más rápido', 'Para escribir datos', 'Para borrar archivos'],
+            answerIndex: 0,
+            explanation: 'El buffer reduce accesos y mejora el rendimiento.'
+        }
+    },
+    {
+        id: 24,
+        title: '24️⃣ FileWriter',
+        summary: 'Escritura básica en archivos.',
+        theory: [
+            'Escribe texto en archivos.',
+            'Puede sobrescribir o anexar.',
+            'Requiere cerrar el stream.'
+        ],
+        breakdown: [
+            'FileWriter escribe en archivos.',
+            'Sirve para persistir datos.',
+            'Se combina con BufferedWriter.'
+        ],
+        code: `FileWriter fw = new FileWriter("salida.txt");`,
+        interview: 'FileWriter permite persistencia básica.',
+        challenge: {
+            type: 'Pregunta conceptual',
+            question: '¿Para qué sirve FileWriter?',
+            options: ['Escribir en archivos', 'Leer archivos', 'Crear carpetas'],
+            answerIndex: 0,
+            explanation: 'FileWriter abre un stream de escritura.'
+        }
+    },
+    {
+        id: 25,
+        title: '25️⃣ Math.random()',
+        summary: 'Genera números entre 0 y 1.',
+        theory: [
+            'Devuelve double entre 0 y 1.',
+            'Es pseudoaleatorio.',
+            'Útil en juegos y simulaciones.'
+        ],
+        breakdown: [
+            'Math.random() devuelve 0 a 1.',
+            'Se escala para otros rangos.',
+            'Útil para probabilidades.'
+        ],
+        code: `double r = Math.random();`,
+        interview: 'Se usa en juegos y simulaciones.',
+        challenge: {
+            type: 'Pregunta conceptual',
+            question: '¿Qué rango devuelve Math.random()?',
+            options: ['0 a 1', '1 a 100', '0 a 10'],
+            answerIndex: 0,
+            explanation: 'Math.random() devuelve un double entre 0.0 y 1.0.'
+        }
+    },
+    {
+        id: 26,
+        title: '26️⃣ LocalDate',
+        summary: 'API moderna para fechas.',
+        theory: [
+            'Pertenece a java.time.',
+            'Es inmutable.',
+            'Reemplaza Date para fechas.'
+        ],
+        breakdown: [
+            'LocalDate maneja fechas modernas.',
+            'No incluye hora.',
+            'Es segura e inmutable.'
+        ],
+        code: `LocalDate hoy = LocalDate.now();`,
+        interview: 'java.time es inmutable y segura.',
+        challenge: {
+            type: 'Pregunta conceptual',
+            question: '¿Qué ventaja tiene LocalDate?',
+            options: ['Es inmutable y moderna', 'Modifica Date directamente', 'Usa timezone automático siempre'],
+            answerIndex: 0,
+            explanation: 'LocalDate es parte de java.time y es inmutable.'
+        }
+    },
+    {
+        id: 27,
+        title: '27️⃣ final',
+        summary: 'Define constantes e inmutabilidad.',
+        theory: [
+            'No se puede reasignar.',
+            'Clarifica intención.',
+            'Evita errores.'
+        ],
+        breakdown: [
+            'final evita modificaciones.',
+            'Se usa para constantes.',
+            'Hace el código más seguro.'
+        ],
+        code: `final int EDAD_MAX = 120;`,
+        interview: 'final previene errores y da intención.',
+        challenge: {
+            type: 'Pregunta conceptual',
+            question: '¿Qué significa final en una variable?',
+            options: ['No se puede modificar', 'Se puede heredar', 'Se elimina al final'],
+            answerIndex: 0,
+            explanation: 'final impide reasignar el valor.'
+        }
+    },
+    {
+        id: 28,
+        title: '28️⃣ package',
+        summary: 'Organiza el código en módulos.',
+        theory: [
+            'Define un namespace.',
+            'Evita conflictos de nombres.',
+            'Ordena proyectos grandes.'
+        ],
+        breakdown: [
+            'package agrupa clases.',
+            'Evita colisiones de nombres.',
+            'Ayuda a estructurar.'
+        ],
+        code: `package com.app.modelo;`,
+        interview: 'Los paquetes estructuran proyectos grandes.',
+        challenge: {
+            type: 'Pregunta conceptual',
+            question: '¿Para qué se usa package?',
+            options: ['Organizar código', 'Crear objetos', 'Definir variables'],
+            answerIndex: 0,
+            explanation: 'package define el espacio de nombres.'
+        }
+    },
+    {
+        id: 29,
+        title: '29️⃣ main',
+        summary: 'Punto de entrada del programa.',
+        theory: [
+            'La JVM busca main.',
+            'Recibe args.',
+            'Inicia la ejecución.'
+        ],
+        breakdown: [
+            'main es el punto de entrada.',
+            'Sin main no hay ejecución.',
+            'args permite parámetros.'
+        ],
+        code: `public static void main(String[] args) {}`,
+        interview: 'Sin main, no hay ejecución.',
+        challenge: {
+            type: 'Pregunta conceptual',
+            question: '¿Qué es main en Java?',
+            options: ['Punto de entrada', 'Constructor', 'Clase abstracta'],
+            answerIndex: 0,
+            explanation: 'main es el método que inicia la ejecución.'
+        }
     }
 ];
 
