@@ -873,6 +873,519 @@ int edad = sc.nextInt();`,
             answerIndex: 0,
             explanation: 'main es el método que inicia la ejecución.'
         }
+    },
+    {
+        id: 30,
+        title: '30️⃣ enum (valores fijos)',
+        summary: 'Conjunto de valores constantes.',
+        theory: [
+            'Define valores fijos.',
+            'Más seguro que Strings.',
+            'Ideal para estados cerrados.'
+        ],
+        breakdown: [
+            'Crea un conjunto de constantes.',
+            'Evita errores por valores inválidos.',
+            'Facilita comparaciones seguras.'
+        ],
+        code: `enum Dia {
+    LUNES, MARTES, MIERCOLES
+}`,
+        interview: 'enum evita errores por valores inválidos.',
+        challenge: {
+            type: 'Pregunta conceptual',
+            question: '¿Para qué se usa un enum?',
+            options: ['Valores fijos y seguros', 'Texto libre', 'Crear hilos'],
+            answerIndex: 0,
+            explanation: 'enum define un conjunto limitado de valores.'
+        }
+    },
+    {
+        id: 31,
+        title: '31️⃣ instanceof',
+        summary: 'Verifica el tipo real del objeto.',
+        theory: [
+            'Comprueba el tipo en runtime.',
+            'Devuelve boolean.',
+            'Se usa antes de casting.'
+        ],
+        breakdown: [
+            'instanceof valida el tipo real.',
+            'Evita ClassCastException.',
+            'Se evalúa en tiempo de ejecución.'
+        ],
+        code: `if (obj instanceof Perro) { }`,
+        interview: 'Se usa para comprobar el tipo en tiempo de ejecución.',
+        challenge: {
+            type: 'Pregunta conceptual',
+            question: '¿Qué devuelve instanceof?',
+            options: ['boolean', 'int', 'Object'],
+            answerIndex: 0,
+            explanation: 'instanceof devuelve true o false.'
+        }
+    },
+    {
+        id: 32,
+        title: '32️⃣ Bloques static',
+        summary: 'Se ejecutan al cargar la clase.',
+        theory: [
+            'Se ejecutan una sola vez.',
+            'Se disparan al cargar la clase.',
+            'Sirven para inicialización.'
+        ],
+        breakdown: [
+            'El bloque corre una vez.',
+            'Se ejecuta antes de crear objetos.',
+            'Útil para recursos compartidos.'
+        ],
+        code: `static {
+    System.out.println("Carga de clase");
+}`,
+        interview: 'Los bloques static inicializan recursos compartidos.',
+        challenge: {
+            type: 'Pregunta conceptual',
+            question: '¿Cuándo se ejecuta un bloque static?',
+            options: ['Al cargar la clase', 'En cada objeto', 'Solo en main'],
+            answerIndex: 0,
+            explanation: 'Se ejecuta una sola vez al cargar la clase.'
+        }
+    },
+    {
+        id: 33,
+        title: '33️⃣ Sobrescritura (@Override)',
+        summary: 'Garantiza que sobrescribes bien.',
+        theory: [
+            'Verifica la firma del método.',
+            'Evita errores silenciosos.',
+            'Usa la anotación @Override.'
+        ],
+        breakdown: [
+            '@Override valida la sobrescritura.',
+            'Protege contra errores de firma.',
+            'Facilita mantenimiento.'
+        ],
+        code: `@Override
+void sonido() { }`,
+        interview: '@Override protege contra errores silenciosos.',
+        challenge: {
+            type: 'Pregunta conceptual',
+            question: '¿Para qué sirve @Override?',
+            options: ['Validar sobrescritura', 'Hacer el método privado', 'Crear una clase'],
+            answerIndex: 0,
+            explanation: '@Override asegura que realmente sobrescribes un método.'
+        }
+    },
+    {
+        id: 34,
+        title: '34️⃣ Sobrecarga (Overloading)',
+        summary: 'Mismo método con distintos parámetros.',
+        theory: [
+            'Mismo nombre, distinta firma.',
+            'Se decide en compilación.',
+            'Mejora legibilidad.'
+        ],
+        breakdown: [
+            'Sobrecarga cambia parámetros.',
+            'No cambia el nombre.',
+            'Permite varias formas de uso.'
+        ],
+        code: `sumar(int a)
+sumar(int a, int b)`,
+        interview: 'La sobrecarga mejora la legibilidad.',
+        challenge: {
+            type: 'Pregunta conceptual',
+            question: '¿Qué cambia en la sobrecarga?',
+            options: ['Parámetros', 'Nombre', 'Clase base'],
+            answerIndex: 0,
+            explanation: 'La sobrecarga varía los parámetros del método.'
+        }
+    },
+    {
+        id: 35,
+        title: '35️⃣ Inmutabilidad (String)',
+        summary: 'String no cambia, crea otro objeto.',
+        theory: [
+            'String es inmutable.',
+            'concat crea un nuevo objeto.',
+            'Mayor seguridad y rendimiento.'
+        ],
+        breakdown: [
+            'El valor original no cambia.',
+            'concat retorna un nuevo String.',
+            'Evita cambios inesperados.'
+        ],
+        code: `String s = "Hola";
+s.concat(" Mundo");`,
+        interview: 'String es inmutable por seguridad y rendimiento.',
+        challenge: {
+            type: 'Pregunta conceptual',
+            question: '¿Qué pasa con s después de concat?',
+            options: ['No cambia', 'Se modifica', 'Se vuelve null'],
+            answerIndex: 0,
+            explanation: 'concat devuelve un nuevo String, s queda igual.'
+        }
+    },
+    {
+        id: 36,
+        title: '36️⃣ Optional',
+        summary: 'Evita NullPointerException.',
+        theory: [
+            'Representa valor presente o ausente.',
+            'Fuerza a manejar null.',
+            'Reduce NPE.'
+        ],
+        breakdown: [
+            'Optional evita null directo.',
+            'Obliga a comprobar presencia.',
+            'Mejora la seguridad del código.'
+        ],
+        code: `Optional<String> nombre;`,
+        interview: 'Optional fuerza a pensar en null.',
+        challenge: {
+            type: 'Pregunta conceptual',
+            question: '¿Qué busca evitar Optional?',
+            options: ['NullPointerException', 'Errores de compilación', 'Herencia'],
+            answerIndex: 0,
+            explanation: 'Optional ayuda a evitar NPE al manejar ausencia.'
+        }
+    },
+    {
+        id: 37,
+        title: '37️⃣ NullPointerException',
+        summary: 'Error por referencia no inicializada.',
+        theory: [
+            'Ocurre al usar un null.',
+            'Es el error más común.',
+            'Se evita con validación.'
+        ],
+        breakdown: [
+            'obj es null.',
+            'Llamar métodos lanza NPE.',
+            'Se previene con null checks.'
+        ],
+        code: `obj.metodo();`,
+        interview: 'El NPE indica referencia no inicializada.',
+        challenge: {
+            type: 'Pregunta conceptual',
+            question: '¿Qué causa un NullPointerException?',
+            options: ['Usar una referencia null', 'Dividir por cero', 'Crear un array'],
+            answerIndex: 0,
+            explanation: 'Llamar métodos en un null genera NPE.'
+        }
+    },
+    {
+        id: 38,
+        title: '38️⃣ try-with-resources',
+        summary: 'Cierra recursos automáticamente.',
+        theory: [
+            'Cierra recursos al final.',
+            'Evita fugas de memoria.',
+            'Simplifica manejo.'
+        ],
+        breakdown: [
+            'El recurso se cierra solo.',
+            'Se evita cerrar manualmente.',
+            'Reduce errores de limpieza.'
+        ],
+        code: `try (Scanner sc = new Scanner(System.in)) { }`,
+        interview: 'Evita fugas de memoria.',
+        challenge: {
+            type: 'Pregunta conceptual',
+            question: '¿Qué ventaja tiene try-with-resources?',
+            options: ['Cierra recursos automáticamente', 'Evita excepciones', 'Acelera el CPU'],
+            answerIndex: 0,
+            explanation: 'Los recursos se cierran automáticamente.'
+        }
+    },
+    {
+        id: 39,
+        title: '39️⃣ final en métodos',
+        summary: 'No se puede sobrescribir.',
+        theory: [
+            'Impide override.',
+            'Asegura comportamiento.',
+            'Útil en clases base.'
+        ],
+        breakdown: [
+            'final bloquea sobrescritura.',
+            'Garantiza lógica fija.',
+            'Evita cambios inesperados.'
+        ],
+        code: `final void metodo() {}`,
+        interview: 'Se usa para asegurar comportamiento.',
+        challenge: {
+            type: 'Pregunta conceptual',
+            question: '¿Qué evita final en métodos?',
+            options: ['Sobrescritura', 'Sobrecarga', 'Compilación'],
+            answerIndex: 0,
+            explanation: 'final impide que se sobrescriba el método.'
+        }
+    },
+    {
+        id: 40,
+        title: '40️⃣ final en clases',
+        summary: 'No permite herencia.',
+        theory: [
+            'Evita que otras clases hereden.',
+            'Se usa en utilidades.',
+            'Protege la implementación.'
+        ],
+        breakdown: [
+            'final bloquea herencia.',
+            'Evita extensiones no deseadas.',
+            'Se usa en clases utilitarias.'
+        ],
+        code: `final class Util {}`,
+        interview: 'Clases utilitarias suelen ser final.',
+        challenge: {
+            type: 'Pregunta conceptual',
+            question: '¿Qué significa final en una clase?',
+            options: ['No se puede heredar', 'No se puede instanciar', 'Es abstracta'],
+            answerIndex: 0,
+            explanation: 'final impide que otras clases hereden.'
+        }
+    },
+    {
+        id: 41,
+        title: '41️⃣ Casting (conversión)',
+        summary: 'Conversión explícita de tipos.',
+        theory: [
+            'Necesita casting explícito.',
+            'Puede fallar en runtime.',
+            'Usar con cuidado.'
+        ],
+        breakdown: [
+            'Convierte referencia padre a hijo.',
+            'Puede lanzar ClassCastException.',
+            'Se valida con instanceof.'
+        ],
+        code: `Animal a = new Perro();
+Perro p = (Perro) a;`,
+        interview: 'El casting debe usarse con cuidado.',
+        challenge: {
+            type: 'Pregunta conceptual',
+            question: '¿Qué riesgo tiene el casting?',
+            options: ['ClassCastException', 'NullPointerException', 'Overflow'],
+            answerIndex: 0,
+            explanation: 'Un casting incorrecto lanza ClassCastException.'
+        }
+    },
+    {
+        id: 42,
+        title: '42️⃣ Autoboxing / Unboxing',
+        summary: 'Conversión automática de primitivos y wrappers.',
+        theory: [
+            'Autoboxing: primitivo a wrapper.',
+            'Unboxing: wrapper a primitivo.',
+            'Java lo hace automáticamente.'
+        ],
+        breakdown: [
+            'Integer x = 5 es autoboxing.',
+            'int y = x es unboxing.',
+            'Simplifica el código.'
+        ],
+        code: `Integer x = 5;
+int y = x;`,
+        interview: 'Java convierte primitivos y wrappers.',
+        challenge: {
+            type: 'Pregunta conceptual',
+            question: '¿Qué es unboxing?',
+            options: ['Wrapper a primitivo', 'Primitivo a wrapper', 'Casting de clases'],
+            answerIndex: 0,
+            explanation: 'Unboxing convierte un wrapper en primitivo.'
+        }
+    },
+    {
+        id: 43,
+        title: '43️⃣ Comparable',
+        summary: 'Define el orden natural.',
+        theory: [
+            'Implementa compareTo.',
+            'Define orden natural.',
+            'Se usa en ordenamientos.'
+        ],
+        breakdown: [
+            'Comparable vive dentro de la clase.',
+            'Define cómo se ordena.',
+            'Permite Collections.sort().'
+        ],
+        code: `class Persona implements Comparable<Persona>`,
+        interview: 'Comparable permite ordenar objetos.',
+        challenge: {
+            type: 'Pregunta conceptual',
+            question: '¿Qué método obliga Comparable?',
+            options: ['compareTo', 'equals', 'hashCode'],
+            answerIndex: 0,
+            explanation: 'Comparable requiere implementar compareTo.'
+        }
+    },
+    {
+        id: 44,
+        title: '44️⃣ Comparator',
+        summary: 'Orden externo y flexible.',
+        theory: [
+            'Define orden fuera de la clase.',
+            'Permite múltiples criterios.',
+            'Más flexible que Comparable.'
+        ],
+        breakdown: [
+            'Comparator vive fuera de la clase.',
+            'Permite ordenar por distintos campos.',
+            'Se pasa a sort().'
+        ],
+        code: `Comparator<Persona> porEdad;`,
+        interview: 'Comparator separa lógica de orden.',
+        challenge: {
+            type: 'Pregunta conceptual',
+            question: '¿Dónde se define el orden en Comparator?',
+            options: ['Fuera de la clase', 'Dentro de la clase', 'En main'],
+            answerIndex: 0,
+            explanation: 'Comparator define el orden externamente.'
+        }
+    },
+    {
+        id: 45,
+        title: '45️⃣ Streams',
+        summary: 'Programación funcional y declarativa.',
+        theory: [
+            'Operaciones encadenadas.',
+            'Más expresivo.',
+            'Procesamiento perezoso.'
+        ],
+        breakdown: [
+            'stream() crea un flujo.',
+            'filter aplica condición.',
+            'Operaciones se encadenan.'
+        ],
+        code: `lista.stream().filter(x -> x > 5);`,
+        interview: 'Streams hacen el código más expresivo.',
+        challenge: {
+            type: 'Pregunta conceptual',
+            question: '¿Qué describe a Streams?',
+            options: ['Operaciones funcionales', 'Variables globales', 'Bloques static'],
+            answerIndex: 0,
+            explanation: 'Streams permiten operaciones funcionales sobre colecciones.'
+        }
+    },
+    {
+        id: 46,
+        title: '46️⃣ Lambdas',
+        summary: 'Funciones anónimas en Java.',
+        theory: [
+            'Sintaxis compacta.',
+            'Reduce boilerplate.',
+            'Útil con interfaces funcionales.'
+        ],
+        breakdown: [
+            'Lambda es una función anónima.',
+            'Simplifica el código.',
+            'Se usa con Streams.'
+        ],
+        code: `x -> x * 2`,
+        interview: 'Las lambdas simplifican código.',
+        challenge: {
+            type: 'Pregunta conceptual',
+            question: '¿Qué representan las lambdas?',
+            options: ['Funciones anónimas', 'Clases abstractas', 'Constructores'],
+            answerIndex: 0,
+            explanation: 'Una lambda es una función sin nombre.'
+        }
+    },
+    {
+        id: 47,
+        title: '47️⃣ synchronized',
+        summary: 'Evita acceso concurrente.',
+        theory: [
+            'Bloquea acceso simultáneo.',
+            'Garantiza consistencia.',
+            'Protege secciones críticas.'
+        ],
+        breakdown: [
+            'synchronized asegura exclusión mutua.',
+            'Solo un hilo entra a la vez.',
+            'Evita condiciones de carrera.'
+        ],
+        code: `synchronized void metodo() {}`,
+        interview: 'Garantiza consistencia en hilos.',
+        challenge: {
+            type: 'Pregunta conceptual',
+            question: '¿Qué garantiza synchronized?',
+            options: ['Exclusión mutua', 'Mayor velocidad', 'Más memoria'],
+            answerIndex: 0,
+            explanation: 'synchronized bloquea acceso concurrente.'
+        }
+    },
+    {
+        id: 48,
+        title: '48️⃣ volatile',
+        summary: 'Visibilidad entre hilos.',
+        theory: [
+            'Garantiza lectura actualizada.',
+            'No bloquea como synchronized.',
+            'Útil para flags.'
+        ],
+        breakdown: [
+            'volatile asegura visibilidad.',
+            'Los hilos leen el último valor.',
+            'No garantiza exclusión mutua.'
+        ],
+        code: `volatile boolean activo;`,
+        interview: 'volatile asegura lectura actualizada.',
+        challenge: {
+            type: 'Pregunta conceptual',
+            question: '¿Qué garantiza volatile?',
+            options: ['Visibilidad', 'Exclusión mutua', 'Persistencia'],
+            answerIndex: 0,
+            explanation: 'volatile garantiza que los hilos lean el valor actualizado.'
+        }
+    },
+    {
+        id: 49,
+        title: '49️⃣ transient',
+        summary: 'Evita serializar campos.',
+        theory: [
+            'No se serializa.',
+            'Protege datos sensibles.',
+            'Ignora el campo al guardar.'
+        ],
+        breakdown: [
+            'transient excluye un campo.',
+            'No se guarda en bytes.',
+            'Se usa para datos sensibles.'
+        ],
+        code: `transient int password;`,
+        interview: 'Protege datos sensibles.',
+        challenge: {
+            type: 'Pregunta conceptual',
+            question: '¿Qué hace transient?',
+            options: ['No serializa el campo', 'Lo vuelve final', 'Lo hace público'],
+            answerIndex: 0,
+            explanation: 'transient excluye el campo de la serialización.'
+        }
+    },
+    {
+        id: 50,
+        title: '50️⃣ Serialización',
+        summary: 'Convierte objetos en bytes.',
+        theory: [
+            'Permite guardar o enviar objetos.',
+            'Usa Serializable.',
+            'Convierte a bytes.'
+        ],
+        breakdown: [
+            'El objeto se vuelve bytes.',
+            'Se puede persistir o enviar.',
+            'Serializable habilita el proceso.'
+        ],
+        code: `implements Serializable`,
+        interview: 'Permite guardar o enviar objetos.',
+        challenge: {
+            type: 'Pregunta conceptual',
+            question: '¿Para qué sirve Serializable?',
+            options: ['Convertir objetos en bytes', 'Crear threads', 'Evitar NPE'],
+            answerIndex: 0,
+            explanation: 'Serializable habilita la serialización de objetos.'
+        }
     }
 ];
 
