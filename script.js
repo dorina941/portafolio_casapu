@@ -17,7 +17,12 @@ document.querySelectorAll('.nav-menu a').forEach(link => {
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
+        const anchorTarget = document.querySelector(this.getAttribute('href'));
+        const gameTarget = this.classList.contains('java-game-btn')
+            ? document.getElementById('java-game')
+            : null;
+        const target = gameTarget || anchorTarget;
+
         if (target) {
             const offsetTop = target.offsetTop - 70; // Account for fixed navbar
             window.scrollTo({
