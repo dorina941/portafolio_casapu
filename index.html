@@ -357,6 +357,74 @@
 
         <!-- Proyectos -->
         <div id="java-projects" class="java-projects">
+            <div class="java-game" id="java-game">
+                <div class="java-game-intro">
+                    <h3>Aprender Java · Juego completo</h3>
+                    <p>Avanza nivel por nivel, responde retos y suma puntos mientras practicas conceptos clave.</p>
+                </div>
+
+                <div class="game-shell">
+                    <div class="game-header">
+                        <div class="game-progress">
+                            <p class="eyebrow">Progreso</p>
+                            <p class="lesson-count" id="lesson-count">Nivel 1 de 50</p>
+                            <div class="progress-track">
+                                <span id="progress-bar"></span>
+                            </div>
+                        </div>
+                        <div class="score-pill">
+                            <span>Puntaje</span>
+                            <strong id="score">0</strong>
+                        </div>
+                    </div>
+
+                    <div class="game-body">
+                        <div class="lesson-info">
+                            <span class="badge" id="lesson-badge">Nivel 1</span>
+                            <h4 id="lesson-title">Clases y Objetos</h4>
+                            <p id="lesson-summary">Clase = molde, objeto = instancia.</p>
+                        </div>
+
+                        <div class="lesson-columns">
+                            <div class="lesson-column">
+                                <h5>Teoría clave</h5>
+                                <ul id="lesson-theory"></ul>
+                                <h5>Qué pasa aquí</h5>
+                                <ul id="lesson-breakdown"></ul>
+                                <p class="interview-quote" id="lesson-interview"></p>
+                            </div>
+                            <div class="lesson-column">
+                                <p class="code-label">Código del nivel</p>
+                                <pre><code id="lesson-code"></code></pre>
+                            </div>
+                        </div>
+
+                        <div class="challenge-area">
+                            <div class="challenge-heading">
+                                <span class="challenge-type" id="challenge-type"></span>
+                                <h5 id="challenge-question"></h5>
+                            </div>
+                            <pre id="challenge-code-block"><code id="challenge-code"></code></pre>
+                            <div class="challenge-options" id="challenge-options"></div>
+                            <p class="challenge-feedback" id="challenge-feedback" role="status"></p>
+                        </div>
+                    </div>
+
+                    <div class="game-controls">
+                        <button id="prev-button" class="btn-secondary">Nivel anterior</button>
+                        <div class="control-meta">
+                            <span id="progress-text">Nivel 1 de 50</span>
+                        </div>
+                        <button id="next-button" class="btn-primary">Siguiente nivel</button>
+                    </div>
+
+                    <div class="completion-message" id="completion-message" hidden>
+                        <h4>¡Juego completado!</h4>
+                        <p>Ya dominas POO en Java para entrevistas.</p>
+                        <p class="final-score">Puntaje final: <span id="final-score"></span></p>
+                    </div>
+                </div>
+            </div>
             <a class="java-project" href="https://github.com/TU_USUARIO/mi-spring-api" target="_blank" rel="noreferrer">
                 <h3>Spring Boot API</h3>
                 <p>CRUD + JWT + PostgreSQL</p>
