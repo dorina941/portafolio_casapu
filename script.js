@@ -1,7 +1,6 @@
 // Mobile Menu Toggle
 const menuToggle = document.querySelector('.menu-toggle');
 const navMenu = document.querySelector('.nav-menu');
-const javaGameButton = document.querySelector('.java-game-btn');
 
 menuToggle.addEventListener('click', () => {
     navMenu.classList.toggle('active');
@@ -13,21 +12,6 @@ document.querySelectorAll('.nav-menu a').forEach(link => {
         navMenu.classList.remove('active');
     });
 });
-
-if (javaGameButton) {
-    javaGameButton.addEventListener('click', (event) => {
-        event.preventDefault();
-        const href = javaGameButton.getAttribute('href');
-        if (!href) {
-            return;
-        }
-
-        const newWindow = window.open(href, '_blank');
-        if (newWindow) {
-            newWindow.opener = null;
-        }
-    });
-}
 
 // Smooth scroll for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
