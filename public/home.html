@@ -132,50 +132,17 @@
 <body>
     <!-- Navegación -->
     <nav class="navbar">
-        <div class="container">
-            <div class="logo" style="opacity: 1;">
-                <svg viewBox="0 0 400 600" class="w-[120px] md:w-[180px] h-auto" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <!-- Gradiente azul eléctrico -->
-                        <linearGradient id="electricBlueNav" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#00f0ff;stop-opacity:1" />
-                            <stop offset="50%" style="stop-color:#0080ff;stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:#0066ff;stop-opacity:1" />
-                        </linearGradient>
-                        
-                        <!-- Filtro de glow para el texto -->
-                        <filter id="textGlowNav" x="-50%" y="-50%" width="200%" height="200%">
-                            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-                            <feMerge>
-                                <feMergeNode in="coloredBlur"/>
-                                <feMergeNode in="SourceGraphic"/>
-                            </feMerge>
-                        </filter>
-                    </defs>
-                    
-                    <!-- Texto principal "DorCas" -->
-                    <text x="200" y="80" 
-                          font-family="Arial Black, Arial, sans-serif" 
-                          font-size="72" 
-                          font-weight="900" 
-                          text-anchor="middle"
-                          fill="none"
-                          stroke="url(#electricBlueNav)"
-                          stroke-width="2.5"
-                          filter="url(#textGlowNav)"
-                          letter-spacing="4">
-                        DorCas
-                    </text>
-                </svg>
-            </div>
+        <div class="container nav-content">
+            <div class="logo"></div>
             <ul class="nav-menu">
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#pintura">Pintura</a></li>
-                <li><a href="#java">Java</a></li>
-                <li><a href="#ilustracion">Ilustración</a></li>
-                <li><a href="#modelado3d">Modelado 3D</a></li>
-                <li><a href="#retratos">Retratos</a></li>
-                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="#pintura">ARTE</a></li>
+                <li><a href="#java">PROGRAMACION</a></li>
+                <li><a href="#unity">UNITY</a></li>
+                <li><a href="#modelado3d">MODELADO 3D</a></li>
+                <li><a href="#tienda">TIENDA</a></li>
+                <li><a href="#contacto">CONTACTO</a></li>
+                <li><a href="#animacion">ANIMACION</a></li>
+                <li><a href="#cv" target="_blank">CV</a></li>
             </ul>
             <button class="menu-toggle" aria-label="Toggle menu">
                 <span></span>
