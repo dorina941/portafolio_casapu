@@ -218,14 +218,33 @@ pre {
 }
 
 .btn-secondary {
+    border: 1px solid var(--border);
+    background: #ffffff;
+    color: var(--text-dark);
+}
+
+.btn-secondary:hover {
+    transform: translateY(-2px);
+    border-color: var(--primary);
+}
+
+.hero .btn-secondary {
     border: 1px solid rgba(255, 255, 255, 0.35);
     background: rgba(255, 255, 255, 0.15);
     color: #f8fafc;
 }
 
-.btn-secondary:hover {
-    transform: translateY(-2px);
+.hero .btn-secondary:hover {
     background: rgba(255, 255, 255, 0.25);
+}
+
+button:disabled,
+button.btn-primary:disabled,
+button.btn-secondary:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
 }
 
 .hero-stats {
@@ -318,6 +337,127 @@ pre {
 .section-heading p {
     color: var(--text-muted);
     font-size: 1.05rem;
+}
+
+/* Game */
+.game-shell {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    padding: 2rem;
+    display: grid;
+    gap: 2rem;
+}
+
+.game-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.game-progress .eyebrow {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+}
+
+.lesson-count {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-top: 0.4rem;
+}
+
+.progress-track {
+    width: 100%;
+    height: 8px;
+    background: var(--border);
+    border-radius: 999px;
+    overflow: hidden;
+    margin-top: 0.6rem;
+}
+
+.progress-track span {
+    display: block;
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    transition: width var(--transition);
+}
+
+.score-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.6rem 1.1rem;
+    border-radius: 999px;
+    background: rgba(79, 70, 229, 0.1);
+    border: 1px solid rgba(79, 70, 229, 0.2);
+    font-weight: 600;
+}
+
+.lesson-info h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    margin: 0.4rem 0 0.3rem;
+}
+
+.lesson-info p {
+    color: var(--text-muted);
+}
+
+.lesson-column {
+    display: grid;
+    gap: 0.6rem;
+}
+
+.challenge-area {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    display: grid;
+    gap: 1rem;
+}
+
+.challenge-heading h4 {
+    font-size: 1.1rem;
+}
+
+.challenge-options button {
+    width: 100%;
+    text-align: left;
+}
+
+.game-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.control-meta {
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.completion-message {
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.completion-message h3 {
+    margin-bottom: 0.4rem;
+}
+
+.final-score {
+    margin-top: 0.6rem;
+    font-weight: 700;
 }
 
 /* Lessons */

@@ -15,12 +15,8 @@
             <div class="logo">Java Interview Game</div>
             <ul class="nav-menu">
                 <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#conceptos">Niveles</a></li>
-                <li><a href="#retos">Retos</a></li>
-                <li><a href="#modelo">Modelo</a></li>
-                <li><a href="#motor">Motor</a></li>
+                <li><a href="#juego">Juego</a></li>
                 <li><a href="#sistema">Sistema</a></li>
-                <li><a href="#demo">Demo</a></li>
             </ul>
             <button class="menu-toggle" aria-label="Toggle menu">
                 <span></span>
@@ -40,8 +36,8 @@
                     Diseñado para subir de nivel mientras practicas conceptos clave de Java.
                 </p>
                 <div class="hero-actions">
-                    <a class="btn-primary" href="#conceptos">Explorar niveles</a>
-                    <a class="btn-secondary" href="#demo">Probar mini reto</a>
+                    <a class="btn-primary" href="#juego">Jugar ahora</a>
+                    <a class="btn-secondary" href="#sistema">Ver sistema</a>
                 </div>
                 <div class="hero-stats">
                     <div class="stat">
@@ -78,646 +74,104 @@
         </div>
     </header>
 
-    <section id="conceptos" class="section">
+    <section id="juego" class="section">
         <div class="container">
             <div class="section-heading reveal">
-                <h2>Clases, encapsulación y más</h2>
-                <p>Estos son los niveles base del juego. Cada concepto tiene teoría, código y una frase lista para entrevistas.</p>
+                <h2>Juego paso a paso</h2>
+                <p>Avanza nivel por nivel, responde retos y suma puntos mientras practicas conceptos clave.</p>
             </div>
 
-            <div class="lesson-grid">
-                <details class="lesson-card reveal" open>
-                    <summary>
-                        <div class="lesson-summary">
-                            <span class="badge">Nivel 1</span>
-                            <h3>Clases y Objetos</h3>
-                            <p>Clase = molde, objeto = instancia real en memoria.</p>
-                        </div>
-                    </summary>
-                    <div class="lesson-body">
-                        <div class="lesson-columns">
-                            <div>
-                                <h4>Teoría clave</h4>
-                                <ul>
-                                    <li>Clase = molde.</li>
-                                    <li>Objeto = instancia.</li>
-                                    <li>Una clase define estructura y comportamiento.</li>
-                                </ul>
-                                <h4>Qué pasa aquí</h4>
-                                <ul>
-                                    <li><code>Persona</code> define cómo es una persona.</li>
-                                    <li><code>p</code> es una persona real en memoria.</li>
-                                    <li><code>p.saludar()</code> ejecuta el método.</li>
-                                </ul>
-                                <p class="interview-quote"><strong>Frase entrevista:</strong> Una clase define estructura y comportamiento, un objeto es una instancia de esa clase.</p>
-                            </div>
-                            <div class="code-stack">
-                                <div>
-                                    <p class="code-label">Clase</p>
-                                    <pre><code>// CLASE
-class Persona {
-    String nombre;
-    int edad;
-
-    void saludar() {
-        System.out.println("Hola, me llamo " + nombre);
-    }
-}</code></pre>
-                                </div>
-                                <div>
-                                    <p class="code-label">Crear objeto</p>
-                                    <pre><code>public class Main {
-    public static void main(String[] args) {
-        Persona p = new Persona();
-        p.nombre = "Juan";
-        p.edad = 30;
-
-        p.saludar();
-    }
-}</code></pre>
-                                </div>
-                            </div>
+            <div class="game-shell reveal">
+                <div class="game-header">
+                    <div class="game-progress">
+                        <p class="eyebrow">Progreso</p>
+                        <p class="lesson-count" id="lesson-count">Nivel 1 de 9</p>
+                        <div class="progress-track">
+                            <span id="progress-bar"></span>
                         </div>
                     </div>
-                </details>
-
-                <details class="lesson-card reveal">
-                    <summary>
-                        <div class="lesson-summary">
-                            <span class="badge">Nivel 2</span>
-                            <h3>Encapsulación</h3>
-                            <p>Protege datos y controla el acceso.</p>
-                        </div>
-                    </summary>
-                    <div class="lesson-body">
-                        <div class="lesson-columns">
-                            <div>
-                                <h4>Qué pasa aquí</h4>
-                                <ul>
-                                    <li><code>private</code> protege la variable.</li>
-                                    <li>Solo se accede con métodos controlados.</li>
-                                    <li>Evita estados inválidos.</li>
-                                </ul>
-                                <p class="interview-quote"><strong>Frase entrevista:</strong> Encapsulación controla el acceso a los datos y evita estados inválidos.</p>
-                            </div>
-                            <div class="code-stack">
-                                <div>
-                                    <p class="code-label">Mal (datos expuestos)</p>
-                                    <pre><code>class Persona {
-    public int edad;
-}</code></pre>
-                                </div>
-                                <div>
-                                    <p class="code-label">Bien (encapsulado)</p>
-                                    <pre><code>class Persona {
-    private int edad;
-
-    public int getEdad() {
-        return edad;
-    }
-
-    public void setEdad(int edad) {
-        if (edad > 0) {
-            this.edad = edad;
-        }
-    }
-}</code></pre>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="score-pill">
+                        <span>Puntaje</span>
+                        <strong id="score">0</strong>
                     </div>
-                </details>
-
-                <details class="lesson-card reveal">
-                    <summary>
-                        <div class="lesson-summary">
-                            <span class="badge">Nivel 3</span>
-                            <h3>Herencia</h3>
-                            <p>Reutiliza comportamiento común.</p>
-                        </div>
-                    </summary>
-                    <div class="lesson-body">
-                        <div class="lesson-columns">
-                            <div>
-                                <h4>Qué pasa aquí</h4>
-                                <ul>
-                                    <li><code>Perro</code> hereda métodos de <code>Animal</code>.</li>
-                                    <li>No repites código.</li>
-                                </ul>
-                                <p class="interview-quote"><strong>Frase entrevista:</strong> La herencia permite reutilizar comportamiento común.</p>
-                            </div>
-                            <div class="code-stack">
-                                <div>
-                                    <p class="code-label">Ejemplo</p>
-                                    <pre><code>class Animal {
-    void comer() {
-        System.out.println("El animal come");
-    }
-}
-
-class Perro extends Animal {
-    void ladrar() {
-        System.out.println("Guau");
-    }
-}
-
-Perro p = new Perro();
-p.comer();
-p.ladrar();</code></pre>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </details>
-
-                <details class="lesson-card reveal">
-                    <summary>
-                        <div class="lesson-summary">
-                            <span class="badge">Nivel 4</span>
-                            <h3>Polimorfismo</h3>
-                            <p>El método ejecutado depende del objeto real.</p>
-                        </div>
-                    </summary>
-                    <div class="lesson-body">
-                        <div class="lesson-columns">
-                            <div>
-                                <h4>Qué pasó</h4>
-                                <ul>
-                                    <li>El tipo es <code>Animal</code>.</li>
-                                    <li>El comportamiento es de <code>Perro</code>.</li>
-                                    <li>Se decide en tiempo de ejecución.</li>
-                                </ul>
-                                <p class="interview-quote"><strong>Frase entrevista:</strong> El método que se ejecuta depende del objeto real, no de la referencia.</p>
-                                <p class="output"><strong>Salida:</strong> Guau</p>
-                            </div>
-                            <div class="code-stack">
-                                <div>
-                                    <p class="code-label">Ejemplo</p>
-                                    <pre><code>class Animal {
-    void sonido() {
-        System.out.println("Sonido genérico");
-    }
-}
-
-class Perro extends Animal {
-    void sonido() {
-        System.out.println("Guau");
-    }
-}
-
-Animal a = new Perro();
-a.sonido();</code></pre>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </details>
-
-                <details class="lesson-card reveal">
-                    <summary>
-                        <div class="lesson-summary">
-                            <span class="badge">Nivel 5</span>
-                            <h3>Abstracción</h3>
-                            <p>Las interfaces definen contratos.</p>
-                        </div>
-                    </summary>
-                    <div class="lesson-body">
-                        <div class="lesson-columns">
-                            <div>
-                                <h4>Qué pasa aquí</h4>
-                                <ul>
-                                    <li>La interfaz dice qué hacer.</li>
-                                    <li>La clase decide cómo hacerlo.</li>
-                                </ul>
-                                <p class="interview-quote"><strong>Frase entrevista:</strong> Las interfaces definen contratos.</p>
-                            </div>
-                            <div class="code-stack">
-                                <div>
-                                    <p class="code-label">Interface</p>
-                                    <pre><code>interface Vehiculo {
-    void arrancar();
-}
-
-class Coche implements Vehiculo {
-    public void arrancar() {
-        System.out.println("Coche arrancando");
-    }
-}</code></pre>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </details>
-
-                <details class="lesson-card reveal">
-                    <summary>
-                        <div class="lesson-summary">
-                            <span class="badge">Nivel 6</span>
-                            <h3>Colecciones</h3>
-                            <p>List, Set y Map para datos y búsquedas eficientes.</p>
-                        </div>
-                    </summary>
-                    <div class="lesson-body">
-                        <div class="lesson-columns">
-                            <div>
-                                <h4>Qué pasa aquí</h4>
-                                <ul>
-                                    <li>List mantiene orden y permite duplicados.</li>
-                                    <li>Set elimina repetidos automáticamente.</li>
-                                    <li>Map guarda clave y valor para acceso rápido.</li>
-                                </ul>
-                                <p class="interview-quote"><strong>Frase entrevista:</strong> Map se usa para búsquedas eficientes por clave.</p>
-                            </div>
-                            <div class="code-stack">
-                                <div>
-                                    <p class="code-label">List</p>
-                                    <pre><code>List&lt;String&gt; nombres = new ArrayList&lt;&gt;();
-nombres.add("Ana");
-nombres.add("Juan");
-nombres.add("Ana");
-
-System.out.println(nombres.get(0));</code></pre>
-                                </div>
-                                <div>
-                                    <p class="code-label">Set</p>
-                                    <pre><code>Set&lt;String&gt; nombres = new HashSet&lt;&gt;();
-nombres.add("Ana");
-nombres.add("Juan");
-nombres.add("Ana");
-
-System.out.println(nombres.size()); // 2</code></pre>
-                                </div>
-                                <div>
-                                    <p class="code-label">Map</p>
-                                    <pre><code>Map&lt;Integer, String&gt; usuarios = new HashMap&lt;&gt;();
-usuarios.put(1, "Juan");
-usuarios.put(2, "Ana");
-
-System.out.println(usuarios.get(1));</code></pre>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </details>
-
-                <details class="lesson-card reveal">
-                    <summary>
-                        <div class="lesson-summary">
-                            <span class="badge">Nivel 7</span>
-                            <h3>Excepciones</h3>
-                            <p>Maneja errores con try, catch y finally.</p>
-                        </div>
-                    </summary>
-                    <div class="lesson-body">
-                        <div class="lesson-columns">
-                            <div>
-                                <h4>Qué pasa aquí</h4>
-                                <ul>
-                                    <li><code>catch</code> maneja el error.</li>
-                                    <li><code>finally</code> se ejecuta siempre.</li>
-                                </ul>
-                            </div>
-                            <div class="code-stack">
-                                <div>
-                                    <p class="code-label">Ejemplo</p>
-                                    <pre><code>try {
-    int x = 10 / 0;
-} catch (ArithmeticException e) {
-    System.out.println("Error: división por cero");
-} finally {
-    System.out.println("Siempre se ejecuta");
-}</code></pre>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </details>
-
-                <details class="lesson-card reveal">
-                    <summary>
-                        <div class="lesson-summary">
-                            <span class="badge">Nivel 8</span>
-                            <h3>Stack vs Heap</h3>
-                            <p>Variables locales vs objetos en memoria.</p>
-                        </div>
-                    </summary>
-                    <div class="lesson-body">
-                        <div class="lesson-columns">
-                            <div>
-                                <h4>Qué pasa aquí</h4>
-                                <ul>
-                                    <li>Stack -> variables locales, rápido y por hilo.</li>
-                                    <li>Heap -> objetos, memoria compartida.</li>
-                                </ul>
-                                <p class="interview-quote"><strong>Frase entrevista:</strong> El Stack es por hilo, el Heap es compartido.</p>
-                            </div>
-                            <div class="code-stack">
-                                <div>
-                                    <p class="code-label">Ejemplo</p>
-                                    <pre><code>void metodo() {
-    int x = 10;          // STACK
-    Persona p = new Persona(); // HEAP
-}</code></pre>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </details>
-
-                <details class="lesson-card reveal">
-                    <summary>
-                        <div class="lesson-summary">
-                            <span class="badge">Nivel 9</span>
-                            <h3>Concurrencia</h3>
-                            <p>Separar lógica y ejecución de hilos.</p>
-                        </div>
-                    </summary>
-                    <div class="lesson-body">
-                        <div class="lesson-columns">
-                            <div>
-                                <h4>Qué pasa aquí</h4>
-                                <ul>
-                                    <li><code>Runnable</code> separa la lógica del hilo.</li>
-                                    <li><code>start()</code> inicia la ejecución.</li>
-                                </ul>
-                                <p class="interview-quote"><strong>Frase entrevista:</strong> Runnable permite desacoplar la tarea del hilo que la ejecuta.</p>
-                            </div>
-                            <div class="code-stack">
-                                <div>
-                                    <p class="code-label">Ejemplo</p>
-                                    <pre><code>class MiHilo implements Runnable {
-    public void run() {
-        System.out.println("Ejecutando hilo");
-    }
-}
-
-Thread t = new Thread(new MiHilo());
-t.start();</code></pre>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </details>
-            </div>
-        </div>
-    </section>
-
-    <section id="retos" class="section alt">
-        <div class="container">
-            <div class="section-heading reveal">
-                <h2>Retos que hacen el juego real</h2>
-                <p>Cada nivel tiene desafíos distintos para entrenar respuestas de entrevista.</p>
-            </div>
-
-            <div class="challenge-grid">
-                <div class="challenge-card reveal">
-                    <span class="challenge-type">Pregunta conceptual</span>
-                    <h3>¿Qué es un objeto?</h3>
-                    <ul class="option-list">
-                        <li>Un archivo.</li>
-                        <li class="correct">Una instancia de una clase.</li>
-                        <li>Un método.</li>
-                    </ul>
                 </div>
 
-                <div class="challenge-card reveal">
-                    <span class="challenge-type">Detectar error</span>
-                    <h3>¿Qué principio se está rompiendo?</h3>
-                    <pre><code>class Persona {
-    public int edad;
-}</code></pre>
-                    <p class="answer"><strong>Respuesta:</strong> Encapsulación.</p>
+                <div class="game-body">
+                    <div class="lesson-info">
+                        <span class="badge" id="lesson-badge">Nivel 1</span>
+                        <h3 id="lesson-title">Clases y Objetos</h3>
+                        <p id="lesson-summary">Clase = molde, objeto = instancia.</p>
+                    </div>
+
+                    <div class="lesson-columns">
+                        <div class="lesson-column">
+                            <h4>Teoría clave</h4>
+                            <ul id="lesson-theory"></ul>
+                            <h4>Qué pasa aquí</h4>
+                            <ul id="lesson-breakdown"></ul>
+                            <p class="interview-quote" id="lesson-interview"></p>
+                        </div>
+                        <div class="lesson-column">
+                            <p class="code-label">Código del nivel</p>
+                            <pre><code id="lesson-code"></code></pre>
+                        </div>
+                    </div>
+
+                    <div class="challenge-area">
+                        <div class="challenge-heading">
+                            <span class="challenge-type" id="challenge-type"></span>
+                            <h4 id="challenge-question"></h4>
+                        </div>
+                        <pre id="challenge-code-block"><code id="challenge-code"></code></pre>
+                        <div class="challenge-options" id="challenge-options"></div>
+                        <p class="challenge-feedback" id="challenge-feedback" role="status"></p>
+                    </div>
                 </div>
 
-                <div class="challenge-card reveal">
-                    <span class="challenge-type">Predice la salida</span>
-                    <h3>¿Qué imprime este código?</h3>
-                    <pre><code>Animal a = new Perro();
-a.sonido();</code></pre>
-                    <p class="answer"><strong>Respuesta:</strong> Guau.</p>
+                <div class="game-controls">
+                    <button id="prev-button" class="btn-secondary">Nivel anterior</button>
+                    <div class="control-meta">
+                        <span id="progress-text">Nivel 1 de 9</span>
+                    </div>
+                    <button id="next-button" class="btn-primary">Siguiente nivel</button>
                 </div>
 
-                <div class="challenge-card reveal">
-                    <span class="challenge-type">Completar código</span>
-                    <h3>Completa el getter</h3>
-                    <pre><code>class Persona {
-    private int edad;
-
-    public int _____() {
-        return edad;
-    }
-}</code></pre>
-                    <p class="answer"><strong>Respuesta:</strong> getEdad.</p>
+                <div class="completion-message" id="completion-message" hidden>
+                    <h3>¡Juego completado!</h3>
+                    <p>Ya dominas POO en Java para entrevistas.</p>
+                    <p class="final-score">Puntaje final: <span id="final-score"></span></p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="modelo" class="section">
+    <section id="sistema" class="section alt">
         <div class="container">
             <div class="section-heading reveal">
-                <h2>Modelo mental y estructura general</h2>
-                <p>El juego se organiza en capas para separar contenido, retos y UI.</p>
-            </div>
-
-            <div class="model-grid">
-                <div class="model-card reveal">
-                    <h3>Estructura en tres capas</h3>
-                    <div class="layer-diagram">
-                        <div class="layer main-layer">
-                            Game
-                            <div class="layer-children">
-                                <div class="layer">Content</div>
-                                <div class="layer">Challenges</div>
-                                <div class="layer">UI</div>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="model-note">
-                        La capa Game coordina progreso, puntaje y flujo. Las otras capas mantienen teoría, retos y experiencia visual.
-                    </p>
-                </div>
-
-                <div class="model-card reveal">
-                    <h3>Niveles = Conceptos de Java</h3>
-                    <ol class="level-list">
-                        <li>Clases y Objetos</li>
-                        <li>Encapsulación</li>
-                        <li>Herencia</li>
-                        <li>Polimorfismo</li>
-                        <li>Abstracción</li>
-                        <li>Colecciones</li>
-                        <li>Excepciones</li>
-                        <li>Stack vs Heap</li>
-                        <li>Concurrencia</li>
-                    </ol>
-                </div>
-            </div>
-
-            <div class="data-grid">
-                <div class="data-text reveal">
-                    <h3>Contenido como datos</h3>
-                    <p>Cada concepto se guarda como datos, no como texto suelto. Esto facilita:</p>
-                    <ul>
-                        <li>Mostrar teoría paso a paso.</li>
-                        <li>Reutilizar y versionar contenido.</li>
-                        <li>Cambiar idioma o generar preguntas automáticas.</li>
-                    </ul>
-                </div>
-                <div class="data-code reveal">
-                    <pre><code>const javaLessons = [
-  {
-    id: 1,
-    title: "Clases y Objetos",
-    theory: [
-      "Clase = molde",
-      "Objeto = instancia",
-      "Una clase define estructura y comportamiento"
-    ],
-    codeExample: `
-class Persona {
-  String nombre;
-  void saludar() {
-    System.out.println("Hola " + nombre);
-  }
-}
-`
-  }
-];</code></pre>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="motor" class="section alt">
-        <div class="container">
-            <div class="section-heading reveal">
-                <h2>Logica del juego</h2>
-                <p>El motor controla progreso, puntaje y la transición entre niveles.</p>
-            </div>
-
-            <div class="engine-grid">
-                <div class="engine-card reveal">
-                    <p class="code-label">Game engine</p>
-                    <pre><code>class LearningGame {
-  constructor(lessons) {
-    this.lessons = lessons;
-    this.currentLesson = 0;
-    this.score = 0;
-  }
-
-  answer(correct) {
-    if (correct) this.score += 10;
-  }
-
-  nextLesson() {
-    this.currentLesson++;
-  }
-}</code></pre>
-                </div>
-                <div class="engine-card reveal">
-                    <h3>Aplicando conceptos dentro del juego</h3>
-                    <ul>
-                        <li>Clases y objetos: <code>Lesson</code>, <code>Challenge</code>, <code>Game</code>.</li>
-                        <li>Encapsulación: el jugador no manipula puntaje ni nivel.</li>
-                        <li>Herencia: retos especializados heredan de un reto base.</li>
-                        <li>Polimorfismo: <code>challenge.checkAnswer(userInput)</code>.</li>
-                        <li>Abstracción: <code>Challenge</code> define el contrato.</li>
-                        <li>Colecciones: arrays, sets y maps para contenido y progreso.</li>
-                    </ul>
-                    <div class="code-stack">
-                        <div>
-                            <p class="code-label">Herencia y polimorfismo</p>
-                            <pre><code>class Challenge {
-  checkAnswer() {}
-}
-
-class QuizChallenge extends Challenge {}
-class CodeChallenge extends Challenge {}</code></pre>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="apply-grid">
-                <div class="apply-card reveal">
-                    <h4>Excepciones</h4>
-                    <p>Respuestas vacías, código inválido o niveles bloqueados generan errores manejados.</p>
-                </div>
-                <div class="apply-card reveal">
-                    <h4>Stack vs Heap</h4>
-                    <p>Nivel especial con visualización de variables locales y objetos en memoria.</p>
-                </div>
-                <div class="apply-card reveal">
-                    <h4>Concurrencia</h4>
-                    <p>Timer para responder y bonus por rapidez en preguntas clave.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="sistema" class="section">
-        <div class="container">
-            <div class="section-heading reveal">
-                <h2>Sistema de juego y motivación</h2>
+                <h2>Sistema de juego</h2>
                 <p>El progreso se siente como una entrevista real con logros y feedback inmediato.</p>
             </div>
 
             <div class="system-grid">
                 <div class="system-card reveal">
-                    <h3>Puntos y progreso</h3>
+                    <h3>Puntos y racha</h3>
                     <ul>
                         <li>+10 puntos por respuesta correcta.</li>
-                        <li>Bonus por racha de aciertos.</li>
-                        <li>Desbloqueo de niveles al completar retos.</li>
+                        <li>Feedback inmediato para corregir errores.</li>
+                        <li>Resumen final con tu puntaje total.</li>
                     </ul>
                 </div>
                 <div class="system-card reveal">
-                    <h3>Marcado de preguntas clave</h3>
+                    <h3>Niveles desbloqueables</h3>
                     <ul>
-                        <li>Las preguntas de entrevista se destacan.</li>
-                        <li>Al final hay un resumen de dominio POO.</li>
-                        <li>Feedback de errores comunes.</li>
+                        <li>9 niveles alineados a conceptos POO.</li>
+                        <li>Retos variados para entrenar entrevistas.</li>
+                        <li>Botones de siguiente y anterior para avanzar.</li>
                     </ul>
                 </div>
                 <div class="system-card reveal">
-                    <h3>Resumen final</h3>
-                    <p>El jugador termina con un mensaje claro: "Ya dominas POO en Java para entrevistas".</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="demo" class="section alt">
-        <div class="container">
-            <div class="section-heading reveal">
-                <h2>Mini reto interactivo</h2>
-                <p>Prueba una versión simplificada del juego y recibe feedback inmediato.</p>
-            </div>
-
-            <div class="demo-grid">
-                <div class="challenge-card reveal">
-                    <span class="challenge-type">Pregunta conceptual</span>
-                    <h3>¿Qué es un objeto?</h3>
-                    <div class="challenge-options" data-answer="1">
-                        <button type="button" class="option" data-option="0">Un archivo</button>
-                        <button type="button" class="option" data-option="1">Una instancia de una clase</button>
-                        <button type="button" class="option" data-option="2">Un método</button>
-                    </div>
-                    <p class="challenge-feedback" role="status"></p>
-                </div>
-
-                <div class="challenge-card reveal">
-                    <span class="challenge-type">Predice la salida</span>
-                    <h3>¿Qué imprime este código?</h3>
-                    <pre><code>Animal a = new Perro();
-a.sonido();</code></pre>
-                    <div class="challenge-options" data-answer="0">
-                        <button type="button" class="option" data-option="0">Guau</button>
-                        <button type="button" class="option" data-option="1">Sonido genérico</button>
-                        <button type="button" class="option" data-option="2">Error en compilación</button>
-                    </div>
-                    <p class="challenge-feedback" role="status"></p>
+                    <h3>Pregunta entrevista</h3>
+                    <p>Las frases clave quedan listas para decir en entrevistas técnicas sin dudar.</p>
                 </div>
             </div>
         </div>
