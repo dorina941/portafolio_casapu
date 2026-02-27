@@ -318,6 +318,76 @@ body {
     opacity: 0.9;
 }
 
+/* Arte section - galerías con fotos reales */
+.arte-section {
+    padding: 100px 0;
+    background: linear-gradient(180deg, #0f172a 0%, #1e293b 30%, #0f172a 100%);
+    position: relative;
+}
+.arte-section .section-description {
+    color: rgba(248, 250, 252, 0.85);
+}
+.arte-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(ellipse at 50% 0%, rgba(147, 112, 219, 0.08) 0%, transparent 50%);
+    pointer-events: none;
+}
+.arte-main-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    background: linear-gradient(135deg, #f9a8d4, #c084fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.arte-main-desc {
+    color: rgba(248, 250, 252, 0.8);
+}
+.arte-subsection {
+    padding: 4rem 0;
+    margin-top: 2rem;
+}
+.arte-subsection-alt {
+    background: rgba(30, 41, 59, 0.5);
+    margin: 0 -20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 16px;
+}
+.arte-subtitle {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.75rem;
+    color: #f9a8d4;
+    margin-bottom: 0.5rem;
+}
+.arte-subdesc {
+    color: rgba(203, 213, 225, 0.9);
+    margin-bottom: 2rem;
+}
+.arte-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.5rem;
+}
+.arte-gallery .gallery-item {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+.arte-gallery .gallery-item:hover {
+    border-color: rgba(249, 168, 212, 0.4);
+    box-shadow: 0 8px 32px rgba(249, 168, 212, 0.15);
+}
+.gallery-real-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    aspect-ratio: 1;
+}
+
 /* Contact Section */
 .contact-section {
     padding: 100px 0;
