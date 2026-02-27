@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portafolio de Arte - Casapu Dorina</title>
-    <link rel="stylesheet" href="/home.css?v=20260129">
+    <link rel="stylesheet" href="/home.css?v=20260227">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -256,182 +256,86 @@
             <h2 class="section-title arte-main-title">Arte</h2>
             <p class="section-description arte-main-desc">Ilustración, retratos y pinturas</p>
 
-            <!-- Subsección Ilustración -->
+            <!-- Subsección Ilustración - Carrusel -->
             <div class="arte-subsection">
                 <h3 class="arte-subtitle">Ilustración</h3>
                 <p class="arte-subdesc">Ilustraciones digitales y tradicionales</p>
-                <div class="gallery arte-gallery">
-                    <div class="gallery-item">
-                        <img src="/ilustraciones/IMG_1858.JPG" alt="Ilustración" class="gallery-real-img">
-                        <div class="gallery-overlay">
-                            <h3>Ilustración</h3>
-                            <p>Estilo único</p>
+                <div class="carousel" data-carousel data-speed="4000">
+                    <button class="carousel-arrow carousel-arrow-left" data-carousel-prev aria-label="Anterior">&#10094;</button>
+                    <div class="carousel-track-container">
+                        <div class="carousel-track">
+                            <div class="carousel-slide" data-slide><img src="/ilustraciones/IMG_1858.JPG" alt="Ilustración - Estilo único"></div>
+                            <div class="carousel-slide" data-slide><img src="/ilustraciones/IMG_5101.JPG" alt="Ilustración - Digital"></div>
+                            <div class="carousel-slide" data-slide><img src="/ilustraciones/IMG_5503.JPG" alt="Ilustración - Creativa"></div>
+                            <div class="carousel-slide" data-slide><img src="/ilustraciones/IMG_5484.JPG" alt="Ilustración - Detalle"></div>
+                            <div class="carousel-slide" data-slide><img src="/ilustraciones/IMG_5490.JPG" alt="Ilustración - Estilo"></div>
+                            <div class="carousel-slide" data-slide><img src="/ilustraciones/IMG_5510.JPG" alt="Ilustración - Expresiva"></div>
+                            <div class="carousel-slide" data-slide><img src="/ilustraciones/IMG_3687.JPG" alt="Ilustración - Original"></div>
+                            <div class="carousel-slide" data-slide><img src="/ilustraciones/IMG_4170.JPG" alt="Ilustración - Arte"></div>
+                            <div class="carousel-slide" data-slide><img src="/ilustraciones/IMG_5204.JPG" alt="Ilustración - Color"></div>
+                            <div class="carousel-slide" data-slide><img src="/ilustraciones/ZOO%20CMYK.png" alt="Ilustración - Zoo"></div>
+                            <div class="carousel-slide" data-slide><img src="/ilustraciones/Maria%20scene%20cmyk.png" alt="Ilustración - Maria scene"></div>
+                            <div class="carousel-slide" data-slide><img src="/ilustraciones/cmyk%20puppy%20with%20tongue.png" alt="Ilustración - Puppy"></div>
                         </div>
                     </div>
-                    <div class="gallery-item">
-                        <img src="/ilustraciones/IMG_5101.JPG" alt="Ilustración" class="gallery-real-img">
-                        <div class="gallery-overlay"><h3>Ilustración</h3><p>Digital</p></div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="/ilustraciones/IMG_5503.JPG" alt="Ilustración" class="gallery-real-img">
-                        <div class="gallery-overlay"><h3>Ilustración</h3><p>Creativa</p></div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="/ilustraciones/IMG_5484.JPG" alt="Ilustración" class="gallery-real-img">
-                        <div class="gallery-overlay"><h3>Ilustración</h3><p>Detalle</p></div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="/ilustraciones/IMG_5490.JPG" alt="Ilustración" class="gallery-real-img">
-                        <div class="gallery-overlay"><h3>Ilustración</h3><p>Estilo</p></div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="/ilustraciones/IMG_5510.JPG" alt="Ilustración" class="gallery-real-img">
-                        <div class="gallery-overlay"><h3>Ilustración</h3><p>Expresiva</p></div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="/ilustraciones/IMG_3687.JPG" alt="Ilustración" class="gallery-real-img">
-                        <div class="gallery-overlay"><h3>Ilustración</h3><p>Original</p></div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="/ilustraciones/IMG_4170.JPG" alt="Ilustración" class="gallery-real-img">
-                        <div class="gallery-overlay"><h3>Ilustración</h3><p>Arte</p></div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="/ilustraciones/IMG_5204.JPG" alt="Ilustración" class="gallery-real-img">
-                        <div class="gallery-overlay"><h3>Ilustración</h3><p>Color</p></div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="/ilustraciones/ZOO%20CMYK.png" alt="Ilustración" class="gallery-real-img">
-                        <div class="gallery-overlay"><h3>Ilustración</h3><p>Zoo</p></div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="/ilustraciones/Maria%20scene%20cmyk.png" alt="Ilustración" class="gallery-real-img">
-                        <div class="gallery-overlay"><h3>Ilustración</h3><p>Maria scene</p></div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="/ilustraciones/cmyk%20puppy%20with%20tongue.png" alt="Ilustración" class="gallery-real-img">
-                        <div class="gallery-overlay"><h3>Ilustración</h3><p>Puppy</p></div>
-                    </div>
+                    <button class="carousel-arrow carousel-arrow-right" data-carousel-next aria-label="Siguiente">&#10095;</button>
+                    <div class="carousel-dots"></div>
                 </div>
             </div>
 
-            <!-- Subsección Retratos -->
+            <!-- Subsección Retratos - Carrusel -->
             <div class="arte-subsection arte-subsection-alt">
                 <h3 class="arte-subtitle">Retratos</h3>
                 <p class="arte-subdesc">Retratos realistas y expresivos</p>
-                <div class="gallery arte-gallery">
-                    <div class="gallery-item">
-                        <img src="/pinturas/retratos/59992690_138220610675483_2434101238162259968_n.jpg" alt="Retrato" class="gallery-real-img">
-                        <div class="gallery-overlay"><h3>Retrato</h3><p>Realista</p></div>
+                <div class="carousel" data-carousel data-speed="5000">
+                    <button class="carousel-arrow carousel-arrow-left" data-carousel-prev aria-label="Anterior">&#10094;</button>
+                    <div class="carousel-track-container">
+                        <div class="carousel-track">
+                            <div class="carousel-slide" data-slide><img src="/pinturas/retratos/59992690_138220610675483_2434101238162259968_n.jpg" alt="Retrato - Realista"></div>
+                            <div class="carousel-slide" data-slide><img src="/pinturas/retratos/124476829_414196589744549_3568725078959251733_n.jpg" alt="Retrato - Expresivo"></div>
+                            <div class="carousel-slide" data-slide><img src="/pinturas/retratos/195960081_547199853110888_7909264055994311422_n.jpg" alt="Retrato - Detalle"></div>
+                            <div class="carousel-slide" data-slide><img src="/pinturas/retratos/80094144_198974631266747_7855236021762392064_n.jpg" alt="Retrato - Carácter"></div>
+                            <div class="carousel-slide" data-slide><img src="/pinturas/retratos/96235687_277529080077968_5500026611203833856_n.jpg" alt="Retrato - Óleo"></div>
+                            <div class="carousel-slide" data-slide><img src="/pinturas/retratos/194227937_547199859777554_2811120681208251232_n.jpg" alt="Retrato - Mirada"></div>
+                            <div class="carousel-slide" data-slide><img src="/pinturas/retratos/20200625_162008.jpg" alt="Retrato - Natural"></div>
+                            <div class="carousel-slide" data-slide><img src="/pinturas/retratos/124211874_414190119745196_6852748291634463772_n.jpg" alt="Retrato - Profesional"></div>
+                            <div class="carousel-slide" data-slide><img src="/pinturas/retratos/106240736_315683522929190_4753545991799800610_n.jpg" alt="Retrato - Clásico"></div>
+                            <div class="carousel-slide" data-slide><img src="/pinturas/retratos/95607882_277529376744605_8492162375925891072_n.jpg" alt="Retrato - Estilo"></div>
+                            <div class="carousel-slide" data-slide><img src="/pinturas/retratos/124210220_413316623165879_899747051897158157_n.jpg" alt="Retrato - Artístico"></div>
+                            <div class="carousel-slide" data-slide><img src="/pinturas/retratos/IMG_4961.jpg" alt="Retrato - Detalle"></div>
+                        </div>
                     </div>
-                    <div class="gallery-item">
-                        <img src="/pinturas/retratos/124476829_414196589744549_3568725078959251733_n.jpg" alt="Retrato" class="gallery-real-img">
-                        <div class="gallery-overlay"><h3>Retrato</h3><p>Expresivo</p></div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="/pinturas/retratos/195960081_547199853110888_7909264055994311422_n.jpg" alt="Retrato" class="gallery-real-img">
-                        <div class="gallery-overlay"><h3>Retrato</h3><p>Detalle</p></div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="/pinturas/retratos/80094144_198974631266747_7855236021762392064_n.jpg" alt="Retrato" class="gallery-real-img">
-                        <div class="gallery-overlay"><h3>Retrato</h3><p>Carácter</p></div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="/pinturas/retratos/96235687_277529080077968_5500026611203833856_n.jpg" alt="Retrato" class="gallery-real-img">
-                        <div class="gallery-overlay"><h3>Retrato</h3><p>Óleo</p></div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="/pinturas/retratos/194227937_547199859777554_2811120681208251232_n.jpg" alt="Retrato" class="gallery-real-img">
-                        <div class="gallery-overlay"><h3>Retrato</h3><p>Mirada</p></div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="/pinturas/retratos/20200625_162008.jpg" alt="Retrato" class="gallery-real-img">
-                        <div class="gallery-overlay"><h3>Retrato</h3><p>Natural</p></div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="/pinturas/retratos/124211874_414190119745196_6852748291634463772_n.jpg" alt="Retrato" class="gallery-real-img">
-                        <div class="gallery-overlay"><h3>Retrato</h3><p>Profesional</p></div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="/pinturas/retratos/106240736_315683522929190_4753545991799800610_n.jpg" alt="Retrato" class="gallery-real-img">
-                        <div class="gallery-overlay"><h3>Retrato</h3><p>Clásico</p></div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="/pinturas/retratos/95607882_277529376744605_8492162375925891072_n.jpg" alt="Retrato" class="gallery-real-img">
-                        <div class="gallery-overlay"><h3>Retrato</h3><p>Estilo</p></div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="/pinturas/retratos/124210220_413316623165879_899747051897158157_n.jpg" alt="Retrato" class="gallery-real-img">
-                        <div class="gallery-overlay"><h3>Retrato</h3><p>Artístico</p></div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="/pinturas/retratos/IMG_4961.jpg" alt="Retrato" class="gallery-real-img">
-                        <div class="gallery-overlay"><h3>Retrato</h3><p>Detalle</p></div>
-                    </div>
+                    <button class="carousel-arrow carousel-arrow-right" data-carousel-next aria-label="Siguiente">&#10095;</button>
+                    <div class="carousel-dots"></div>
                 </div>
             </div>
 
-            <!-- Subsección Pinturas -->
+            <!-- Subsección Pinturas - Carrusel -->
             <div class="arte-subsection">
                 <h3 class="arte-subtitle">Pinturas</h3>
                 <p class="arte-subdesc">Obras originales en diferentes técnicas</p>
-                <div class="gallery arte-gallery">
-                    <div class="gallery-item">
-                        <img src="/pinturas/IMG_7418.jpg" alt="Pintura" class="gallery-real-img">
-                        <div class="gallery-overlay"><h3>Pintura</h3><p>Óleo</p></div>
+                <div class="carousel" data-carousel data-speed="4500">
+                    <button class="carousel-arrow carousel-arrow-left" data-carousel-prev aria-label="Anterior">&#10094;</button>
+                    <div class="carousel-track-container">
+                        <div class="carousel-track">
+                            <div class="carousel-slide" data-slide><img src="/pinturas/IMG_7418.jpg" alt="Pintura - Óleo"></div>
+                            <div class="carousel-slide" data-slide><img src="/pinturas/IMG_1543.jpg" alt="Pintura - Acrílico"></div>
+                            <div class="carousel-slide" data-slide><img src="/pinturas/IMG_1190.jpg" alt="Pintura - Color"></div>
+                            <div class="carousel-slide" data-slide><img src="/pinturas/IMG_6329.jpg" alt="Pintura - Mixta"></div>
+                            <div class="carousel-slide" data-slide><img src="/pinturas/IMG_20201219_181749_556.jpg" alt="Pintura - Original"></div>
+                            <div class="carousel-slide" data-slide><img src="/pinturas/IMG_20200907_192118.jpg" alt="Pintura - Óleo"></div>
+                            <div class="carousel-slide" data-slide><img src="/pinturas/20170614_131105.jpg" alt="Pintura - Técnica"></div>
+                            <div class="carousel-slide" data-slide><img src="/pinturas/677567.jpg" alt="Pintura - Estilo"></div>
+                            <div class="carousel-slide" data-slide><img src="/pinturas/298467_10150452137298764_1296655914_n_10150452137298764.jpg" alt="Pintura - Original"></div>
+                            <div class="carousel-slide" data-slide><img src="/pinturas/270284_10150296270633764_2236522_n.jpg" alt="Pintura - Arte"></div>
+                            <div class="carousel-slide" data-slide><img src="/pinturas/319178_10150452136338764_547957332_n_10150452136338764.jpg" alt="Pintura - Óleo"></div>
+                            <div class="carousel-slide" data-slide><img src="/pinturas/53290985_113133643184180_6493802045437378560_n.jpg" alt="Pintura - Detalle"></div>
+                            <div class="carousel-slide" data-slide><img src="/pinturas/20190116_150437%20-%20copia.png" alt="Pintura - Acuarela"></div>
+                            <div class="carousel-slide" data-slide><img src="/pinturas/20181127_155626%20%281%29.png" alt="Pintura - Mixta"></div>
+                        </div>
                     </div>
-                    <div class="gallery-item">
-                        <img src="/pinturas/IMG_1543.jpg" alt="Pintura" class="gallery-real-img">
-                        <div class="gallery-overlay"><h3>Pintura</h3><p>Acrílico</p></div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="/pinturas/IMG_1190.jpg" alt="Pintura" class="gallery-real-img">
-                        <div class="gallery-overlay"><h3>Pintura</h3><p>Color</p></div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="/pinturas/IMG_6329.jpg" alt="Pintura" class="gallery-real-img">
-                        <div class="gallery-overlay"><h3>Pintura</h3><p>Mixta</p></div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="/pinturas/IMG_20201219_181749_556.jpg" alt="Pintura" class="gallery-real-img">
-                        <div class="gallery-overlay"><h3>Pintura</h3><p>Original</p></div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="/pinturas/IMG_20200907_192118.jpg" alt="Pintura" class="gallery-real-img">
-                        <div class="gallery-overlay"><h3>Pintura</h3><p>Óleo</p></div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="/pinturas/20170614_131105.jpg" alt="Pintura" class="gallery-real-img">
-                        <div class="gallery-overlay"><h3>Pintura</h3><p>Técnica</p></div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="/pinturas/677567.jpg" alt="Pintura" class="gallery-real-img">
-                        <div class="gallery-overlay"><h3>Pintura</h3><p>Estilo</p></div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="/pinturas/298467_10150452137298764_1296655914_n_10150452137298764.jpg" alt="Pintura" class="gallery-real-img">
-                        <div class="gallery-overlay"><h3>Pintura</h3><p>Original</p></div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="/pinturas/270284_10150296270633764_2236522_n.jpg" alt="Pintura" class="gallery-real-img">
-                        <div class="gallery-overlay"><h3>Pintura</h3><p>Arte</p></div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="/pinturas/319178_10150452136338764_547957332_n_10150452136338764.jpg" alt="Pintura" class="gallery-real-img">
-                        <div class="gallery-overlay"><h3>Pintura</h3><p>Óleo</p></div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="/pinturas/53290985_113133643184180_6493802045437378560_n.jpg" alt="Pintura" class="gallery-real-img">
-                        <div class="gallery-overlay"><h3>Pintura</h3><p>Detalle</p></div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="/pinturas/20190116_150437%20-%20copia.png" alt="Pintura" class="gallery-real-img">
-                        <div class="gallery-overlay"><h3>Pintura</h3><p>Acuarela</p></div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="/pinturas/20181127_155626%20%281%29.png" alt="Pintura" class="gallery-real-img">
-                        <div class="gallery-overlay"><h3>Pintura</h3><p>Mixta</p></div>
-                    </div>
+                    <button class="carousel-arrow carousel-arrow-right" data-carousel-next aria-label="Siguiente">&#10095;</button>
+                    <div class="carousel-dots"></div>
                 </div>
             </div>
         </div>
@@ -618,6 +522,17 @@
         </div>
     </footer>
 
-    <script src="/home.js?v=20260129"></script>
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightbox-close" aria-label="Cerrar">&times;</button>
+        <button class="lightbox-arrow lightbox-arrow-left" id="lightbox-prev" aria-label="Anterior">&#10094;</button>
+        <div class="lightbox-content">
+            <img src="" alt="" id="lightbox-img">
+        </div>
+        <button class="lightbox-arrow lightbox-arrow-right" id="lightbox-next" aria-label="Siguiente">&#10095;</button>
+        <div class="lightbox-counter" id="lightbox-counter"></div>
+    </div>
+
+    <script src="/home.js?v=20260227"></script>
 </body>
 </html>
