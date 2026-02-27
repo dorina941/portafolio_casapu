@@ -79,6 +79,169 @@ document.querySelectorAll('.gallery-item').forEach(item => {
     observer.observe(item);
 });
 
+// ===== Carousels + Lightbox =====
+const initCarousels = () => {
+    const carousels = document.querySelectorAll('[data-carousel]');
+    if (!carousels.length) return;
+
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxClose = document.getElementById('lightbox-close');
+    const lightboxPrev = document.getElementById('lightbox-prev');
+    const lightboxNext = document.getElementById('lightbox-next');
+    const lightboxCounter = document.getElementById('lightbox-counter');
+
+    let currentLightboxImages = [];
+    let currentLightboxIndex = 0;
+
+    const openLightbox = (images, index) => {
+        currentLightboxImages = images;
+        currentLightboxIndex = index;
+        updateLightbox();
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    };
+
+    const closeLightbox = () => {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+    };
+
+    const updateLightbox = () => {
+        const src = currentLightboxImages[currentLightboxIndex];
+        lightboxImg.src = src;
+        lightboxImg.alt = `Imagen ${currentLightboxIndex + 1} de ${currentLightboxImages.length}`;
+        lightboxCounter.textContent = `${currentLightboxIndex + 1} / ${currentLightboxImages.length}`;
+    };
+
+    const lightboxNavigate = (dir) => {
+        currentLightboxIndex = (currentLightboxIndex + dir + currentLightboxImages.length) % currentLightboxImages.length;
+        updateLightbox();
+    };
+
+    if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+    if (lightboxPrev) lightboxPrev.addEventListener('click', () => lightboxNavigate(-1));
+    if (lightboxNext) lightboxNext.addEventListener('click', () => lightboxNavigate(1));
+
+    if (lightbox) {
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (!lightbox.classList.contains('active')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') lightboxNavigate(-1);
+        if (e.key === 'ArrowRight') lightboxNavigate(1);
+    });
+
+    carousels.forEach((carousel) => {
+        const track = carousel.querySelector('.carousel-track');
+        const slides = Array.from(carousel.querySelectorAll('[data-slide]'));
+        const prevBtn = carousel.querySelector('[data-carousel-prev]');
+        const nextBtn = carousel.querySelector('[data-carousel-next]');
+        const dotsContainer = carousel.querySelector('.carousel-dots');
+        const speed = parseInt(carousel.dataset.speed) || 4000;
+
+        if (!track || slides.length === 0) return;
+
+        const getVisibleCount = () => {
+            const w = window.innerWidth;
+            if (w <= 480) return 1;
+            if (w <= 768) return 2;
+            if (w <= 1024) return 3;
+            return 4;
+        };
+
+        let currentIndex = 0;
+        let autoPlayTimer = null;
+
+        const totalPages = () => Math.max(1, slides.length - getVisibleCount() + 1);
+
+        const buildDots = () => {
+            if (!dotsContainer) return;
+            dotsContainer.innerHTML = '';
+            const pages = totalPages();
+            for (let i = 0; i < pages; i++) {
+                const dot = document.createElement('button');
+                dot.className = 'carousel-dot' + (i === currentIndex ? ' active' : '');
+                dot.setAttribute('aria-label', `Ir a grupo ${i + 1}`);
+                dot.addEventListener('click', () => goTo(i));
+                dotsContainer.appendChild(dot);
+            }
+        };
+
+        const updateDots = () => {
+            if (!dotsContainer) return;
+            const dots = dotsContainer.querySelectorAll('.carousel-dot');
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentIndex);
+            });
+        };
+
+        const goTo = (index) => {
+            const maxIdx = totalPages() - 1;
+            currentIndex = Math.max(0, Math.min(index, maxIdx));
+            const slideWidth = 100 / getVisibleCount();
+            track.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
+            updateDots();
+        };
+
+        const next = () => {
+            const maxIdx = totalPages() - 1;
+            goTo(currentIndex >= maxIdx ? 0 : currentIndex + 1);
+        };
+
+        const prev = () => {
+            const maxIdx = totalPages() - 1;
+            goTo(currentIndex <= 0 ? maxIdx : currentIndex - 1);
+        };
+
+        const startAutoPlay = () => {
+            stopAutoPlay();
+            autoPlayTimer = setInterval(next, speed);
+        };
+
+        const stopAutoPlay = () => {
+            if (autoPlayTimer) {
+                clearInterval(autoPlayTimer);
+                autoPlayTimer = null;
+            }
+        };
+
+        if (prevBtn) prevBtn.addEventListener('click', () => { prev(); startAutoPlay(); });
+        if (nextBtn) nextBtn.addEventListener('click', () => { next(); startAutoPlay(); });
+
+        carousel.addEventListener('mouseenter', stopAutoPlay);
+        carousel.addEventListener('mouseleave', startAutoPlay);
+
+        const images = slides.map(s => s.querySelector('img')?.src).filter(Boolean);
+
+        slides.forEach((slide, idx) => {
+            slide.addEventListener('click', () => {
+                openLightbox(images, idx);
+            });
+        });
+
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                if (currentIndex >= totalPages()) currentIndex = totalPages() - 1;
+                goTo(currentIndex);
+                buildDots();
+            }, 150);
+        });
+
+        buildDots();
+        goTo(0);
+        startAutoPlay();
+    });
+};
+
+initCarousels();
+
 const initJavaGame = () => {
     const gameRoot = document.getElementById('java-game');
     if (!gameRoot) {
