@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animación - Casapu Dorina</title>
+    <link rel="stylesheet" href="/home.css?v=20260227">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .animacion-page { padding: 100px 0 60px; background: #0f172a; min-height: 100vh; }
+        .animacion-page .section-title { color: #f9a8d4; font-size: 2rem; margin-bottom: 0.5rem; }
+        .animacion-page .section-description { color: rgba(248, 250, 252, 0.85); margin-bottom: 3rem; }
+        .video-slots { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem; }
+        .video-slot {
+            background: rgba(30, 41, 59, 0.6);
+            border: 2px dashed rgba(249, 168, 212, 0.4);
+            border-radius: 12px;
+            aspect-ratio: 16/9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .video-slot:hover { border-color: rgba(249, 168, 212, 0.7); background: rgba(30, 41, 59, 0.8); }
+        .video-slot input[type="file"] { display: none; }
+        .video-slot .upload-icon {
+            font-size: 3rem;
+            color: rgba(249, 168, 212, 0.7);
+            margin-bottom: 0.5rem;
+        }
+        .video-slot .upload-text { color: rgba(248, 250, 252, 0.9); font-size: 0.95rem; text-align: center; }
+        .video-slot video { width: 100%; height: 100%; object-fit: contain; border-radius: 8px; display: none; }
+        .video-slot.has-video .upload-prompt { display: none; }
+        .video-slot.has-video video { display: block; }
+        .animacion-page .nav-menu a { color: #f1f5f9; }
+        .animacion-page .navbar { background: rgba(15, 23, 42, 0.95); border-bottom-color: rgba(249, 168, 212, 0.2); }
+        .video-slot.uploading .upload-text { opacity: 0.6; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-content">
+            <div class="logo"></div>
+            <ul class="nav-menu">
+                <li><a href="/home.html">Inicio</a></li>
+            </ul>
+            <button class="menu-toggle" aria-label="Menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <section class="animacion-page">
+        <div class="container">
+            <h2 class="section-title">Animación</h2>
+            <p class="section-description">Espacios para subir y mostrar tus vídeos de animación</p>
+
+            <div class="video-slots">
+                <label class="video-slot" for="video1">
+                    <input type="file" id="video1" accept="video/*">
+                    <div class="upload-prompt">
+                        <span class="upload-icon">▶</span>
+                        <span class="upload-text" data-default="Clic para subir vídeo 1">Clic para subir vídeo 1</span>
+                    </div>
+                    <video controls loop muted></video>
+                </label>
+                <label class="video-slot" for="video2">
+                    <input type="file" id="video2" accept="video/*">
+                    <div class="upload-prompt">
+                        <span class="upload-icon">▶</span>
+                        <span class="upload-text" data-default="Clic para subir vídeo 2">Clic para subir vídeo 2</span>
+                    </div>
+                    <video controls loop muted></video>
+                </label>
+                <label class="video-slot" for="video3">
+                    <input type="file" id="video3" accept="video/*">
+                    <div class="upload-prompt">
+                        <span class="upload-icon">▶</span>
+                        <span class="upload-text" data-default="Clic para subir vídeo 3">Clic para subir vídeo 3</span>
+                    </div>
+                    <video controls loop muted></video>
+                </label>
+                <label class="video-slot" for="video4">
+                    <input type="file" id="video4" accept="video/*">
+                    <div class="upload-prompt">
+                        <span class="upload-icon">▶</span>
+                        <span class="upload-text" data-default="Clic para subir vídeo 4">Clic para subir vídeo 4</span>
+                    </div>
+                    <video controls loop muted></video>
+                </label>
+                <label class="video-slot" for="video5">
+                    <input type="file" id="video5" accept="video/*">
+                    <div class="upload-prompt">
+                        <span class="upload-icon">▶</span>
+                        <span class="upload-text" data-default="Clic para subir vídeo 5">Clic para subir vídeo 5</span>
+                    </div>
+                    <video controls loop muted></video>
+                </label>
+                <label class="video-slot" for="video6">
+                    <input type="file" id="video6" accept="video/*">
+                    <div class="upload-prompt">
+                        <span class="upload-icon">▶</span>
+                        <span class="upload-text" data-default="Clic para subir vídeo 6">Clic para subir vídeo 6</span>
+                    </div>
+                    <video controls loop muted></video>
+                </label>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="/supabase-config.js"></script>
+    <script>
+        const BUCKET = 'animacion-videos';
+
+        function getSupabase() {
+            if (!window.SUPABASE_URL || !window.SUPABASE_ANON_KEY) {
+                console.warn('Configura SUPABASE_URL y SUPABASE_ANON_KEY en supabase-config.js');
+                return null;
+            }
+            return window.supabase || (window.supabase = supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY));
+        }
+
+        document.querySelector('.menu-toggle')?.addEventListener('click', () => {
+            document.querySelector('.nav-menu')?.classList.toggle('active');
+        });
+
+        async function loadVideos() {
+            const sb = getSupabase();
+            if (!sb) return;
+            const { data } = await sb.from('animacion_videos').select('*').order('slot_number');
+            if (data) {
+                data.forEach(row => {
+                    const slot = document.querySelector(`[data-slot="${row.slot_number}"]`);
+                    if (slot) {
+                        const video = slot.querySelector('video');
+                        video.src = row.url;
+                        slot.classList.add('has-video');
+                    }
+                });
+            }
+        }
+
+        document.querySelectorAll('.video-slot').forEach(slot => {
+            const input = slot.querySelector('input[type="file"]');
+            const slotNum = parseInt(input.id.replace('video', ''), 10);
+            slot.dataset.slot = slotNum;
+
+            input.addEventListener('change', async function() {
+                const file = this.files[0];
+                if (!file) return;
+
+                const sb = getSupabase();
+                if (!sb) {
+                    const video = slot.querySelector('video');
+                    video.src = URL.createObjectURL(file);
+                    slot.classList.add('has-video');
+                    return;
+                }
+
+                slot.classList.add('uploading');
+                const uploadText = slot.querySelector('.upload-text');
+                const originalText = uploadText?.dataset?.default || uploadText?.textContent || '';
+                if (uploadText) uploadText.textContent = 'Subiendo...';
+                const ext = file.name.split('.').pop() || 'mp4';
+                const path = `slot_${slotNum}.${ext}`;
+
+                try {
+                    const { data: existing } = await sb.from('animacion_videos').select('storage_path').eq('slot_number', slotNum).single();
+                    if (existing?.storage_path) {
+                        await sb.storage.from(BUCKET).remove([existing.storage_path]);
+                    }
+
+                    const { error: uploadErr } = await sb.storage.from(BUCKET).upload(path, file, { upsert: true });
+                    if (uploadErr) throw uploadErr;
+
+                    const { data: urlData } = sb.storage.from(BUCKET).getPublicUrl(path);
+                    const url = urlData.publicUrl;
+
+                    await sb.from('animacion_videos').upsert({
+                        slot_number: slotNum,
+                        storage_path: path,
+                        url: url
+                    }, { onConflict: 'slot_number' });
+
+                    const video = slot.querySelector('video');
+                    video.src = url;
+                    slot.classList.add('has-video');
+                } catch (e) {
+                    console.error('Error subiendo vídeo:', e);
+                    alert('Error al subir. ¿Configuraste Supabase? Revisa la consola.');
+                } finally {
+                    slot.classList.remove('uploading');
+                    if (uploadText) uploadText.textContent = originalText;
+                    this.value = '';
+                }
+            });
+        });
+
+        loadVideos();
+    </script>
+</body>
+</html>

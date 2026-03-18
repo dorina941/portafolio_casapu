@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portafolio de Arte - Casapu Dorina</title>
-    <link rel="stylesheet" href="/home.css?v=20260129">
+    <link rel="stylesheet" href="/home.css?v=20260227">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -135,14 +135,14 @@
         <div class="container nav-content">
             <div class="logo"></div>
             <ul class="nav-menu">
-                <li><a href="#pintura">ARTE</a></li>
+                <li><a href="#arte">ARTE</a></li>
                 <li><a href="#java">PROGRAMACION</a></li>
                 <li><a href="#unity">UNITY</a></li>
                 <li><a href="#modelado3d">MODELADO 3D</a></li>
                 <li><a href="#tienda">TIENDA</a></li>
                 <li><a href="#contacto">CONTACTO</a></li>
-                <li><a href="#animacion">ANIMACION</a></li>
-                <li><a href="#cv" target="_blank">CV</a></li>
+                <li><a href="/animacion.html" target="_blank">ANIMACION</a></li>
+                <li><a href="/cvCompleto.pdf" target="_blank">CV</a></li>
             </ul>
             <button class="menu-toggle" aria-label="Toggle menu">
                 <span></span>
@@ -159,7 +159,7 @@
             <!-- Grid de botones animados -->
             <div class="grid grid-cols-4 gap-4 md:gap-6 max-w-4xl mx-auto">
                 <!-- Botón Arte -->
-                <a href="#pintura"
+                <a href="#arte"
                    class="glow-breathe relative w-full h-[88px] bg-slate-950 text-slate-200 no-underline uppercase tracking-[4px] font-bold font-mono overflow-hidden inline-block text-[11px] md:text-[13px] select-none flex items-center justify-center rounded-lg border border-slate-700"
                    style="font-family:Consolas,monospace;">
                     <span class="relative z-10 text-center px-2"
@@ -219,7 +219,7 @@
                 </a>
 
                 <!-- Botón Animacion -->
-                <a href="#animacion"
+                <a href="/animacion.html" target="_blank"
                    class="glow-breathe relative w-full h-[88px] bg-slate-950 text-slate-200 no-underline uppercase tracking-[4px] font-bold font-mono overflow-hidden inline-block text-[11px] md:text-[13px] select-none flex items-center justify-center rounded-lg border border-slate-700"
                    style="font-family:Consolas,monospace;">
                     <span class="relative z-10 text-center px-2"
@@ -229,7 +229,7 @@
                 </a>
 
                 <!-- Botón CV -->
-                <a href="#cv" target="_blank"
+                <a href="/cvCompleto.pdf" target="_blank"
                    class="glow-breathe relative w-full h-[88px] bg-slate-950 text-slate-200 no-underline uppercase tracking-[4px] font-bold font-mono overflow-hidden inline-block text-[11px] md:text-[13px] select-none flex items-center justify-center rounded-lg border border-slate-700"
                    style="font-family:Consolas,monospace;">
                     <span class="relative z-10 text-center px-2"
@@ -250,93 +250,92 @@
             Aprender JAVA juego
         </a>
     </div>
-    <!-- Sección Pintura -->
-    <section id="pintura" class="portfolio-section">
+    <!-- Sección Arte (Ilustración, Retratos, Pinturas) -->
+    <section id="arte" class="portfolio-section arte-section">
         <div class="container">
-            <h2 class="section-title">Pintura</h2>
-            <p class="section-description">Obras originales en diferentes técnicas y estilos</p>
-            <div class="gallery">
-                <div class="gallery-item">
-                    <div class="gallery-image-placeholder">
-                        <span>Pintura 1</span>
+            <h2 class="section-title arte-main-title">Arte</h2>
+            <p class="section-description arte-main-desc">Ilustración, retratos y pinturas</p>
+
+            <!-- Subsección Ilustración - Carrusel -->
+            <div class="arte-subsection">
+                <h3 class="arte-subtitle">Ilustración</h3>
+                <p class="arte-subdesc">Ilustraciones digitales y tradicionales</p>
+                <div class="carousel" data-carousel data-speed="4000">
+                    <button class="carousel-arrow carousel-arrow-left" data-carousel-prev aria-label="Anterior">&#10094;</button>
+                    <div class="carousel-track-container">
+                        <div class="carousel-track">
+                            <div class="carousel-slide" data-slide><img src="/ilustraciones/IMG_1858.JPG" alt="Ilustración - Estilo único"></div>
+                            <div class="carousel-slide" data-slide><img src="/ilustraciones/IMG_5101.JPG" alt="Ilustración - Digital"></div>
+                            <div class="carousel-slide" data-slide><img src="/ilustraciones/IMG_5503.JPG" alt="Ilustración - Creativa"></div>
+                            <div class="carousel-slide" data-slide><img src="/ilustraciones/IMG_5484.JPG" alt="Ilustración - Detalle"></div>
+                            <div class="carousel-slide" data-slide><img src="/ilustraciones/IMG_5490.JPG" alt="Ilustración - Estilo"></div>
+                            <div class="carousel-slide" data-slide><img src="/ilustraciones/IMG_5510.JPG" alt="Ilustración - Expresiva"></div>
+                            <div class="carousel-slide" data-slide><img src="/ilustraciones/IMG_3687.JPG" alt="Ilustración - Original"></div>
+                            <div class="carousel-slide" data-slide><img src="/ilustraciones/IMG_4170.JPG" alt="Ilustración - Arte"></div>
+                            <div class="carousel-slide" data-slide><img src="/ilustraciones/IMG_5204.JPG" alt="Ilustración - Color"></div>
+                            <div class="carousel-slide" data-slide><img src="/ilustraciones/ZOO%20CMYK.png" alt="Ilustración - Zoo"></div>
+                            <div class="carousel-slide" data-slide><img src="/ilustraciones/Maria%20scene%20cmyk.png" alt="Ilustración - Maria scene"></div>
+                            <div class="carousel-slide" data-slide><img src="/ilustraciones/cmyk%20puppy%20with%20tongue.png" alt="Ilustración - Puppy"></div>
+                        </div>
                     </div>
-                    <div class="gallery-overlay">
-                        <h3>Título de la Obra</h3>
-                        <p>Técnica: Óleo</p>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-image-placeholder">
-                        <span>Pintura 2</span>
-                    </div>
-                    <div class="gallery-overlay">
-                        <h3>Título de la Obra</h3>
-                        <p>Técnica: Acrílico</p>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-image-placeholder">
-                        <span>Pintura 3</span>
-                    </div>
-                    <div class="gallery-overlay">
-                        <h3>Título de la Obra</h3>
-                        <p>Técnica: Acuarela</p>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-image-placeholder">
-                        <span>Pintura 4</span>
-                    </div>
-                    <div class="gallery-overlay">
-                        <h3>Título de la Obra</h3>
-                        <p>Técnica: Mixta</p>
-                    </div>
+                    <button class="carousel-arrow carousel-arrow-right" data-carousel-next aria-label="Siguiente">&#10095;</button>
+                    <div class="carousel-dots"></div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Sección Ilustración -->
-    <section id="ilustracion" class="portfolio-section alt-bg">
-        <div class="container">
-            <h2 class="section-title">Ilustración</h2>
-            <p class="section-description">Ilustraciones digitales y tradicionales con estilo único</p>
-            <div class="gallery">
-                <div class="gallery-item">
-                    <div class="gallery-image-placeholder">
-                        <span>Ilustración 1</span>
+            <!-- Subsección Retratos - Carrusel -->
+            <div class="arte-subsection arte-subsection-alt">
+                <h3 class="arte-subtitle">Retratos</h3>
+                <p class="arte-subdesc">Retratos realistas y expresivos</p>
+                <div class="carousel" data-carousel data-speed="5000">
+                    <button class="carousel-arrow carousel-arrow-left" data-carousel-prev aria-label="Anterior">&#10094;</button>
+                    <div class="carousel-track-container">
+                        <div class="carousel-track">
+                            <div class="carousel-slide" data-slide><img src="/pinturas/retratos/59992690_138220610675483_2434101238162259968_n.jpg" alt="Retrato - Realista"></div>
+                            <div class="carousel-slide" data-slide><img src="/pinturas/retratos/124476829_414196589744549_3568725078959251733_n.jpg" alt="Retrato - Expresivo"></div>
+                            <div class="carousel-slide" data-slide><img src="/pinturas/retratos/195960081_547199853110888_7909264055994311422_n.jpg" alt="Retrato - Detalle"></div>
+                            <div class="carousel-slide" data-slide><img src="/pinturas/retratos/80094144_198974631266747_7855236021762392064_n.jpg" alt="Retrato - Carácter"></div>
+                            <div class="carousel-slide" data-slide><img src="/pinturas/retratos/96235687_277529080077968_5500026611203833856_n.jpg" alt="Retrato - Óleo"></div>
+                            <div class="carousel-slide" data-slide><img src="/pinturas/retratos/194227937_547199859777554_2811120681208251232_n.jpg" alt="Retrato - Mirada"></div>
+                            <div class="carousel-slide" data-slide><img src="/pinturas/retratos/20200625_162008.jpg" alt="Retrato - Natural"></div>
+                            <div class="carousel-slide" data-slide><img src="/pinturas/retratos/124211874_414190119745196_6852748291634463772_n.jpg" alt="Retrato - Profesional"></div>
+                            <div class="carousel-slide" data-slide><img src="/pinturas/retratos/106240736_315683522929190_4753545991799800610_n.jpg" alt="Retrato - Clásico"></div>
+                            <div class="carousel-slide" data-slide><img src="/pinturas/retratos/95607882_277529376744605_8492162375925891072_n.jpg" alt="Retrato - Estilo"></div>
+                            <div class="carousel-slide" data-slide><img src="/pinturas/retratos/124210220_413316623165879_899747051897158157_n.jpg" alt="Retrato - Artístico"></div>
+                            <div class="carousel-slide" data-slide><img src="/pinturas/retratos/IMG_4961.jpg" alt="Retrato - Detalle"></div>
+                        </div>
                     </div>
-                    <div class="gallery-overlay">
-                        <h3>Título de la Ilustración</h3>
-                        <p>Estilo: Digital</p>
-                    </div>
+                    <button class="carousel-arrow carousel-arrow-right" data-carousel-next aria-label="Siguiente">&#10095;</button>
+                    <div class="carousel-dots"></div>
                 </div>
-                <div class="gallery-item">
-                    <div class="gallery-image-placeholder">
-                        <span>Ilustración 2</span>
+            </div>
+
+            <!-- Subsección Pinturas - Carrusel -->
+            <div class="arte-subsection">
+                <h3 class="arte-subtitle">Pinturas</h3>
+                <p class="arte-subdesc">Obras originales en diferentes técnicas</p>
+                <div class="carousel" data-carousel data-speed="4500">
+                    <button class="carousel-arrow carousel-arrow-left" data-carousel-prev aria-label="Anterior">&#10094;</button>
+                    <div class="carousel-track-container">
+                        <div class="carousel-track">
+                            <div class="carousel-slide" data-slide><img src="/pinturas/IMG_7418.jpg" alt="Pintura - Óleo"></div>
+                            <div class="carousel-slide" data-slide><img src="/pinturas/IMG_1543.jpg" alt="Pintura - Acrílico"></div>
+                            <div class="carousel-slide" data-slide><img src="/pinturas/IMG_1190.jpg" alt="Pintura - Color"></div>
+                            <div class="carousel-slide" data-slide><img src="/pinturas/IMG_6329.jpg" alt="Pintura - Mixta"></div>
+                            <div class="carousel-slide" data-slide><img src="/pinturas/IMG_20201219_181749_556.jpg" alt="Pintura - Original"></div>
+                            <div class="carousel-slide" data-slide><img src="/pinturas/IMG_20200907_192118.jpg" alt="Pintura - Óleo"></div>
+                            <div class="carousel-slide" data-slide><img src="/pinturas/20170614_131105.jpg" alt="Pintura - Técnica"></div>
+                            <div class="carousel-slide" data-slide><img src="/pinturas/677567.jpg" alt="Pintura - Estilo"></div>
+                            <div class="carousel-slide" data-slide><img src="/pinturas/298467_10150452137298764_1296655914_n_10150452137298764.jpg" alt="Pintura - Original"></div>
+                            <div class="carousel-slide" data-slide><img src="/pinturas/270284_10150296270633764_2236522_n.jpg" alt="Pintura - Arte"></div>
+                            <div class="carousel-slide" data-slide><img src="/pinturas/319178_10150452136338764_547957332_n_10150452136338764.jpg" alt="Pintura - Óleo"></div>
+                            <div class="carousel-slide" data-slide><img src="/pinturas/53290985_113133643184180_6493802045437378560_n.jpg" alt="Pintura - Detalle"></div>
+                            <div class="carousel-slide" data-slide><img src="/pinturas/20190116_150437%20-%20copia.png" alt="Pintura - Acuarela"></div>
+                            <div class="carousel-slide" data-slide><img src="/pinturas/20181127_155626%20%281%29.png" alt="Pintura - Mixta"></div>
+                        </div>
                     </div>
-                    <div class="gallery-overlay">
-                        <h3>Título de la Ilustración</h3>
-                        <p>Estilo: Tradicional</p>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-image-placeholder">
-                        <span>Ilustración 3</span>
-                    </div>
-                    <div class="gallery-overlay">
-                        <h3>Título de la Ilustración</h3>
-                        <p>Estilo: Digital</p>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-image-placeholder">
-                        <span>Ilustración 4</span>
-                    </div>
-                    <div class="gallery-overlay">
-                        <h3>Título de la Ilustración</h3>
-                        <p>Estilo: Mixto</p>
-                    </div>
+                    <button class="carousel-arrow carousel-arrow-right" data-carousel-next aria-label="Siguiente">&#10095;</button>
+                    <div class="carousel-dots"></div>
                 </div>
             </div>
         </div>
@@ -388,52 +387,6 @@
         </div>
     </section>
 
-    <!-- Sección Retratos -->
-    <section id="retratos" class="portfolio-section alt-bg">
-        <div class="container">
-            <h2 class="section-title">Retratos</h2>
-            <p class="section-description">Retratos realistas y expresivos en diferentes medios</p>
-            <div class="gallery">
-                <div class="gallery-item">
-                    <div class="gallery-image-placeholder">
-                        <span>Retrato 1</span>
-                    </div>
-                    <div class="gallery-overlay">
-                        <h3>Título del Retrato</h3>
-                        <p>Medio: Lápiz</p>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-image-placeholder">
-                        <span>Retrato 2</span>
-                    </div>
-                    <div class="gallery-overlay">
-                        <h3>Título del Retrato</h3>
-                        <p>Medio: Carboncillo</p>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-image-placeholder">
-                        <span>Retrato 3</span>
-                    </div>
-                    <div class="gallery-overlay">
-                        <h3>Título del Retrato</h3>
-                        <p>Medio: Digital</p>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-image-placeholder">
-                        <span>Retrato 4</span>
-                    </div>
-                    <div class="gallery-overlay">
-                        <h3>Título del Retrato</h3>
-                        <p>Medio: Óleo</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Sección Contacto -->
     <section id="contacto" class="contact-section">
         <div class="container">
@@ -477,6 +430,17 @@
         </div>
     </footer>
 
-    <script src="/home.js?v=20260129"></script>
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightbox-close" aria-label="Cerrar">&times;</button>
+        <button class="lightbox-arrow lightbox-arrow-left" id="lightbox-prev" aria-label="Anterior">&#10094;</button>
+        <div class="lightbox-content">
+            <img src="" alt="" id="lightbox-img">
+        </div>
+        <button class="lightbox-arrow lightbox-arrow-right" id="lightbox-next" aria-label="Siguiente">&#10095;</button>
+        <div class="lightbox-counter" id="lightbox-counter"></div>
+    </div>
+
+    <script src="/home.js?v=20260227"></script>
 </body>
 </html>
