@@ -39,7 +39,7 @@
         .video-slot.has-video video { display: block; }
         .animacion-page .nav-menu a { color: #f1f5f9; }
         .animacion-page .navbar { background: rgba(15, 23, 42, 0.95); border-bottom-color: rgba(249, 168, 212, 0.2); }
-    </style>
+        .video-slot.uploading .upload-text { opacity: 0.6; }
     </style>
 </head>
 <body>
@@ -67,7 +67,7 @@
                     <input type="file" id="video1" accept="video/*">
                     <div class="upload-prompt">
                         <span class="upload-icon">▶</span>
-                        <span class="upload-text">Clic para subir vídeo 1</span>
+                        <span class="upload-text" data-default="Clic para subir vídeo 1">Clic para subir vídeo 1</span>
                     </div>
                     <video controls loop muted></video>
                 </label>
@@ -75,7 +75,7 @@
                     <input type="file" id="video2" accept="video/*">
                     <div class="upload-prompt">
                         <span class="upload-icon">▶</span>
-                        <span class="upload-text">Clic para subir vídeo 2</span>
+                        <span class="upload-text" data-default="Clic para subir vídeo 2">Clic para subir vídeo 2</span>
                     </div>
                     <video controls loop muted></video>
                 </label>
@@ -83,7 +83,7 @@
                     <input type="file" id="video3" accept="video/*">
                     <div class="upload-prompt">
                         <span class="upload-icon">▶</span>
-                        <span class="upload-text">Clic para subir vídeo 3</span>
+                        <span class="upload-text" data-default="Clic para subir vídeo 3">Clic para subir vídeo 3</span>
                     </div>
                     <video controls loop muted></video>
                 </label>
@@ -91,7 +91,7 @@
                     <input type="file" id="video4" accept="video/*">
                     <div class="upload-prompt">
                         <span class="upload-icon">▶</span>
-                        <span class="upload-text">Clic para subir vídeo 4</span>
+                        <span class="upload-text" data-default="Clic para subir vídeo 4">Clic para subir vídeo 4</span>
                     </div>
                     <video controls loop muted></video>
                 </label>
@@ -99,7 +99,7 @@
                     <input type="file" id="video5" accept="video/*">
                     <div class="upload-prompt">
                         <span class="upload-icon">▶</span>
-                        <span class="upload-text">Clic para subir vídeo 5</span>
+                        <span class="upload-text" data-default="Clic para subir vídeo 5">Clic para subir vídeo 5</span>
                     </div>
                     <video controls loop muted></video>
                 </label>
@@ -107,7 +107,7 @@
                     <input type="file" id="video6" accept="video/*">
                     <div class="upload-prompt">
                         <span class="upload-icon">▶</span>
-                        <span class="upload-text">Clic para subir vídeo 6</span>
+                        <span class="upload-text" data-default="Clic para subir vídeo 6">Clic para subir vídeo 6</span>
                     </div>
                     <video controls loop muted></video>
                 </label>
@@ -115,21 +115,96 @@
         </div>
     </section>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="/supabase-config.js"></script>
     <script>
+        const BUCKET = 'animacion-videos';
+
+        function getSupabase() {
+            if (!window.SUPABASE_URL || !window.SUPABASE_ANON_KEY) {
+                console.warn('Configura SUPABASE_URL y SUPABASE_ANON_KEY en supabase-config.js');
+                return null;
+            }
+            return window.supabase || (window.supabase = supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY));
+        }
+
         document.querySelector('.menu-toggle')?.addEventListener('click', () => {
             document.querySelector('.nav-menu')?.classList.toggle('active');
         });
-        document.querySelectorAll('.video-slot input[type="file"]').forEach(input => {
-            input.addEventListener('change', function() {
+
+        async function loadVideos() {
+            const sb = getSupabase();
+            if (!sb) return;
+            const { data } = await sb.from('animacion_videos').select('*').order('slot_number');
+            if (data) {
+                data.forEach(row => {
+                    const slot = document.querySelector(`[data-slot="${row.slot_number}"]`);
+                    if (slot) {
+                        const video = slot.querySelector('video');
+                        video.src = row.url;
+                        slot.classList.add('has-video');
+                    }
+                });
+            }
+        }
+
+        document.querySelectorAll('.video-slot').forEach(slot => {
+            const input = slot.querySelector('input[type="file"]');
+            const slotNum = parseInt(input.id.replace('video', ''), 10);
+            slot.dataset.slot = slotNum;
+
+            input.addEventListener('change', async function() {
                 const file = this.files[0];
-                if (file) {
-                    const slot = this.closest('.video-slot');
+                if (!file) return;
+
+                const sb = getSupabase();
+                if (!sb) {
                     const video = slot.querySelector('video');
                     video.src = URL.createObjectURL(file);
                     slot.classList.add('has-video');
+                    return;
+                }
+
+                slot.classList.add('uploading');
+                const uploadText = slot.querySelector('.upload-text');
+                const originalText = uploadText?.dataset?.default || uploadText?.textContent || '';
+                if (uploadText) uploadText.textContent = 'Subiendo...';
+                const ext = file.name.split('.').pop() || 'mp4';
+                const path = `slot_${slotNum}.${ext}`;
+
+                try {
+                    const { data: existing } = await sb.from('animacion_videos').select('storage_path').eq('slot_number', slotNum).single();
+                    if (existing?.storage_path) {
+                        await sb.storage.from(BUCKET).remove([existing.storage_path]);
+                    }
+
+                    const { error: uploadErr } = await sb.storage.from(BUCKET).upload(path, file, { upsert: true });
+                    if (uploadErr) throw uploadErr;
+
+                    const { data: urlData } = sb.storage.from(BUCKET).getPublicUrl(path);
+                    const url = urlData.publicUrl;
+
+                    await sb.from('animacion_videos').upsert({
+                        slot_number: slotNum,
+                        storage_path: path,
+                        url: url
+                    }, { onConflict: 'slot_number' });
+
+                    const video = slot.querySelector('video');
+                    video.src = url;
+                    slot.classList.add('has-video');
+                } catch (e) {
+                    console.error('Error subiendo vídeo:', e);
+                    alert('Error al subir. ¿Configuraste Supabase? Revisa la consola.');
+                } finally {
+                    slot.classList.remove('uploading');
+                    if (uploadText) uploadText.textContent = originalText;
+                    this.value = '';
                 }
             });
         });
+
+        loadVideos();
     </script>
 </body>
 </html>
